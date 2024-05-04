@@ -1,0 +1,71 @@
+html {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: #0B0A08;
+  background-color: #F4F5F7;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* 水平方向に中央に配置 */
+    margin: 0;
+    height: 100vh; /* ビューポートの高さいっぱいに要素を広げる */
+    width: 100vw;
+}
+.content {
+    width: 80%;
+    background-color: white;
+}
+
+#header {
+    box-shadow: 5px 10px 20px rgba(50,50,205,0.5);
+    padding: 20px;
+    background-color: white;
+
+    nav {
+        display: flex;
+        align-items: center; /* 要素を垂直方向中央に配置 */
+        justify-content: right;
+    }
+    
+    nav ul {
+        list-style-type: none; /* リストのマーカーを削除 */
+        padding: 0;
+        margin: 0;
+        display: flex;
+        font-size: 19px;
+        flex-wrap: wrap;
+    }
+    
+    nav li {
+        margin: 0 10px; /* リンク間の間隔を設定 */
+        text-align: center;
+        width: 170px;
+    }
+    nav li a {
+        text-decoration: none;
+        background-color: transparent;
+        transition: background-color 0.3s;
+    }
+    nav li a:hover {
+        background-color: #D6D6F5;
+    }
+
+    .headerTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title h1 {
+            font-weight: 700;
+        }
+    }
+}
+main {
+    margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    /* スマホ表示の場合 */
+    .content {
+        width: 100%
+    }
+}
