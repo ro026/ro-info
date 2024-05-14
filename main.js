@@ -14,7 +14,7 @@ const menus = [
 
 let menusHTML = ""
 menus.forEach((menu) => {
-    menusHTML += `<li id="${menu.path}" class="${nowPath === menu.path ? "now-page" : ""}"><a href="${menu.path}/index.html">${menu.name}</a></li>`;
+    menusHTML += `<li id="${menu.path}" class="${nowPath === menu.path ? "now-page" : ""}"><a href="${topAbsPath}${menu.path}/index.html">${menu.name}</a></li>`;
 })
 
 const headerHtml = `
