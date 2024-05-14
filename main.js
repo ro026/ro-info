@@ -1,8 +1,27 @@
+// 現在アクセスしているメニューの背景を変える
+const url = window.location.href;
+const paths = url.split('/');
+const topPageNum = paths.indexOf('ro-info');
+const nowPath = paths[topPageNum + 1];
+const topAbsPath = "../".repeat(paths.length - paths.indexOf('ro-info') - 2 /** 配列番号が0で始まる + 最後のパスはファイル名であるはず */)
+
+const menus = [
+    { path: "khs-web-pj", name: "釜高祭WebページPJ" },
+    { path: "info-1", name: "情報I" },
+    { path: "self-introduction", name: "自己紹介" },
+    { path: "link", name: "おすすめリンク集" },
+]
+
+let menusHTML = ""
+menus.forEach((menu) => {
+    menusHTML += `<li id="${menu.path}" class="${nowPath === menu.path ? "now-page" : ""}"><a href="${menu.path}/index.html">${menu.name}</a></li>`;
+})
+
 const headerHtml = `
 <header>
 <div class="headerTitle">
     <div class="title">
-        <h1><a href="index.html">おかだのページ</a></h1>
+        <h1><a href="${topAbsPath}index.html">おかだのページ</a></h1>
     </div>
     <div class="link">
         <a href="https://www.facebook.com/profile.php?id=100015394358438" target="_blank" rel="noreferrer noopener">
@@ -12,12 +31,7 @@ const headerHtml = `
 </div>
 </header>
 <nav>
-<ul>
-    <li><a href="khs-web-pj.html">釜高祭WebページPJ</a></li>
-    <li><a href="info-1.html">情報I</a></li>
-    <li><a href="self-introduction.html">自己紹介</a></li>
-    <li><a href="link.html">おすすめリンク集</a></li>
-</ul>
+<ul>${menusHTML}</ul>
 </nav>
 `
 

@@ -72,6 +72,14 @@ nav li a:hover {
     background-color: #D6D6F5;
 }
 
+nav .now-page {
+    background-color: rgb(50, 50, 205);
+
+    a {
+        color: white;
+    }
+}
+
 .headerTitle {
     display: flex;
     align-items: center;
