@@ -27,7 +27,7 @@ const classList = [
 
 const table = document.createElement('table');
 const headerRow = document.createElement('tr');
-headerRow.innerHTML = '<th></th><th>タイトル</th><th>スライド</th><th>穴埋め</th><th>キーワード</th>';
+headerRow.innerHTML = '<th></th><th>タイトル</th><th>スライド</th><th>穴埋め</th>';
 table.appendChild(headerRow);
 
 const tableBody = document.createElement('td');
@@ -37,19 +37,24 @@ classList.map((list, index) => {
     let innerHTML = "";
     const date = new Date(list.date);
 
-    innerHTML += `<td>${index + 1}</td>`
+    innerHTML += `<td rowspan="2">${index + 1}</td>`
     innerHTML += `<td>${list.title}</td>`;
     innerHTML += `<td>${list.slide === "" ? "準備中！" : ""}</td>`;
     innerHTML += `<td>${list.blank === "" ? "準備中！" : ""}</td>`;
-    innerHTML += `<td><ul class="keyword">`
-    // キーワードのリスト化
-    list.keyWord.map((word) => innerHTML += `<li>${word}</li>`)
-    innerHTML += `</ul></td>`;
-
-    console.log(`<td><ul>${list.keyWord.map((word) => `<li>${word}</li>`)}</ul></td>`)
 
     bodyRow.innerHTML = innerHTML;
     table.appendChild(bodyRow);
+
+    const keyWordRow = document.createElement('tr');
+    let keyWordRowHTML = "";
+
+    keyWordRowHTML += `<td colspan="3"><ul class="keyword">`
+    // キーワードのリスト化
+    list.keyWord.map((word) => keyWordRowHTML += `<li>${word}</li>`)
+    keyWordRowHTML += `</ul></td>`;
+    keyWordRow.innerHTML = keyWordRowHTML;
+
+    table.appendChild(keyWordRow);
 })
 
 document.getElementById("class-list").appendChild(table);
