@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- ここから全ページ共通 -->
 <html lang="ja">
 
 <head>
@@ -19,6 +20,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- 共通部分ここまで -->
+    <link rel="stylesheet" type="text/css" href="top.css">
 </head>
 
 <body>
@@ -26,19 +30,20 @@
         <div id="header">
         </div>
         <main>
-            <section>
-                <h2>このページは？</h2>
-                <p>Webページの作成方法や、情報Iに関する情報をお届けします。</p>
-            </section>
-            <section>
-                <h2>自己紹介</h2>
-                <p>岡田稜平</p>
-            </section>
+            <h2>このページは？</h2>
+            <p>Webページの作成方法や、情報Iに関する情報をお届けします。</p>
+            <h2>更新情報</h2>
+            <div id="update-list"> </div>
+            <h2>自己紹介</h2>
+            <p>岡田稜平</p>
         </main>
     </div>
 </body>
 
-<!-- 外部ファイルの読み込み -->
+<!-- 外部ファイルの読み込み(共通) -->
 <script src="main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="top.js"></script>
 
 </html>

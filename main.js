@@ -22,3 +22,14 @@ const headerHtml = `
 `
 
 document.getElementById("header").innerHTML = headerHtml;
+
+/**
+ * 日付のフォーマットを行います。
+ * @param {*} date 
+ * @returns 
+ */
+function formatDate(date) {
+    const formattedDate = date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    return formattedDate;
+
+}

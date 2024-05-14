@@ -1,0 +1,22 @@
+header {
+    background-color: #A03CB3;
+    color: white;
+}
+
+.main {
+    display: flex;
+}
+
+.left {
+    width: 50%;
+    background-color: #72CC82;
+}
+
+.right {
+    width: 50%;
+    background-color: #96DBB4;
+}
+
+footer {
+    background-color: #DB96B4
+}

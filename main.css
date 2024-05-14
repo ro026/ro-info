@@ -1,71 +1,124 @@
 html {
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  color: #0B0A08;
-  background-color: #F4F5F7;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    color: rgb(50, 50, 50);
+    background-color: rgba(245, 245, 245, 1);
 }
 
 body {
     display: flex;
-    justify-content: center; /* 水平方向に中央に配置 */
+    justify-content: center;
+    /* 水平方向に中央に配置 */
     margin: 0;
-    height: 100vh; /* ビューポートの高さいっぱいに要素を広げる */
+    height: 100vh;
+    /* ビューポートの高さいっぱいに要素を広げる */
     width: 100vw;
 }
+
 .content {
     width: 80%;
-    background-color: white;
+    background-color: rgba(255, 255, 240, 1);
 }
 
 #header {
-    box-shadow: 5px 10px 20px rgba(50,50,205,0.5);
+    background-color: rgba(255, 250, 250, 1);
     padding: 20px;
-    background-color: white;
 
-    nav {
-        display: flex;
-        align-items: center; /* 要素を垂直方向中央に配置 */
-        justify-content: right;
-    }
-    
-    nav ul {
-        list-style-type: none; /* リストのマーカーを削除 */
-        padding: 0;
-        margin: 0;
-        display: flex;
-        font-size: 19px;
-        flex-wrap: wrap;
-    }
-    
-    nav li {
-        margin: 0 10px; /* リンク間の間隔を設定 */
-        text-align: center;
-        width: 170px;
-    }
-    nav li a {
-        text-decoration: none;
-        background-color: transparent;
-        transition: background-color 0.3s;
-    }
-    nav li a:hover {
-        background-color: #D6D6F5;
-    }
+    h1 {
+        background-color: rgb(103, 159, 190);
 
-    .headerTitle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .title h1 {
-            font-weight: 700;
+        a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
         }
     }
 }
+
+h2 {
+    border-left: 10px solid rgb(50, 50, 205);
+    padding-left: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    /* 要素を垂直方向中央に配置 */
+    justify-content: right;
+}
+
+nav ul {
+    list-style-type: none;
+    /* リストのマーカーを削除 */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 19px;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0 10px;
+    /* リンク間の間隔を設定 */
+    text-align: center;
+    width: 170px;
+}
+
+nav li a {
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+nav li a:hover {
+    background-color: #D6D6F5;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title h1 {
+        font-weight: 700;
+    }
+}
+
 main {
     margin: 10px;
 }
 
 @media only screen and (max-width: 600px) {
+
     /* スマホ表示の場合 */
     .content {
         width: 100%
     }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgb(103, 159, 190);
+    color: white;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+td {
+    text-align: left;
+}
+
+tr {
+    background-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* 偶数行の背景色 */
 }
