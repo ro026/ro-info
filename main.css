@@ -137,6 +137,7 @@ tr:nth-child(even) {
 
 .swiper-container {
     width: 100%;
+    margin-bottom: 40px;
 }
 
 .swiper-slide {
