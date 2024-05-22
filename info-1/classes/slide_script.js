@@ -15,44 +15,11 @@
     // h2タグのタイトルを変更する
     const classNameElement = document.getElementById("class-name");
     classNameElement.innerText = title;
-
-    // Swiper.js
-    addSwiperJsCDN();
-    addSwiperHTML('slide');
-    // 授業スライドを追加していく
-    const swiperWrapper = document.querySelector(".swiper-wrapper");
-
-    let fileCount = 1;
-    let loadImage = () => {
-        const img = new Image();
-        img.onload = function () {
-            const swiperSlideDiv = document.createElement('div');
-            swiperSlideDiv.classList.add('swiper-slide');
-
-            const contentDiv = document.createElement('div');
-            contentDiv.classList.add('content');
-
-            contentDiv.appendChild(img);
-            swiperSlideDiv.appendChild(contentDiv);
-            swiperWrapper.appendChild(swiperSlideDiv);
-            fileCount++;
-            if (fileCount < 100) {
-                loadImage();
-            }
-        }
-        img.onerror = function () {
-            // 画像を全て読み込み、クラスの追加をし終わってからでないと、最後までページ遷移しない
-            newSwipper();
-        };
-        img.src = `slide/スライド${fileCount.toString().padStart(2, '0')}.png`;
-    }
-    loadImage();
 })()
 
 /**
  * Swiper.js の CDNを追加する
  */
-
 function addSwiperJsCDN() {
     // swiper.jsを読み込むための準備
     const head = document.head || document.getElementsByTagName('head')[0];
@@ -76,13 +43,13 @@ function addSwiperJsCDN() {
     body.appendChild(script2);
 }
 
-function addSwiperHTML(addClassName) {
+function addSwiperHTML(addClassName, id, title) {
     const addClassElement = document.getElementById(addClassName);
 
-    addClassElement.innerHTML = `
+    let innerHTML = `
     <div class="swiper">
     <!-- 必要に応じたwrapper -->
-        <div class="swiper-container">
+        <div class="swiper-container"  id="${id}">
             <div class="swiper-wrapper">
                 <!-- スライドはJavaScriptを用いて動的に追加 -->
             </div>
@@ -94,6 +61,11 @@ function addSwiperHTML(addClassName) {
             <div class="swiper-button-next"></div>
         </div>
     </div>`
+
+    if (title) {
+        innerHTML = `<h3>${title}</h3>` + innerHTML
+    }
+    addClassElement.insertAdjacentHTML('beforeend', innerHTML)
 }
 
 /**
@@ -119,4 +91,31 @@ function newSwipper() {
             el: '.swiper-scrollbar',
         },
     });
+}
+
+/**
+ * 授業資料を見ることができるHTMLを生成し、追加する
+ */
+function addClassSlide(pageInfo) {
+    // Swiper.js
+    addSwiperJsCDN();
+    for (let i = 0; i < pageInfo.length; i++) {
+        addSwiperHTML('class-area', `class-${i}`, pageInfo[i].title);
+
+        const swiperWrapper = document.querySelector(`#class-${i} .swiper-wrapper`);
+
+        let innerHTML = '';
+
+        for (let fileCount = pageInfo[i].start; fileCount <= pageInfo[i].end; fileCount++) {
+            innerHTML += `
+            <div class="swiper-slide">
+                <div class="content">
+                    <img src="slide/スライド${fileCount.toString().padStart(2, '0')}.png">
+                </div>
+            </div>`
+        }
+        swiperWrapper.insertAdjacentHTML('beforeend', innerHTML);
+        // 画像を全て読み込み、クラスの追加をし終わってからでないと、最後までページ遷移しない
+        newSwipper();
+    }
 }
