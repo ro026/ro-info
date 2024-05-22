@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <div id="class-area">
+            </div>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+
+
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="../slide_script.js"></script>
+
+<script>
+    const pageInfo = [
+        { title: "アナログとデジタル・コンピュータでの処理の仕組み", start: 2, end: 5 },
+        { title: "2進数→10進数", start: 6, end: 18 },
+        { title: "10進数→2進数", start: 19, end: 31 },
+        { title: "ビット・バイト", start: 32, end: 34 },
+    ]
+    addClassSlide(pageInfo);
+</script>
+
+
+</html>
