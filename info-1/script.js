@@ -43,7 +43,7 @@
         const bodyRow = document.createElement('tr');
         let innerHTML = "";
 
-        innerHTML += `<td rowspan="2">${index + 1}</td>`
+        innerHTML += `<td rowspan="2" style="text-align: center;">${index + 1}</td>`
         innerHTML += `<td>${list.title}</td>`;
         innerHTML += `<td>${list.slide === "" ? `<a href="classes/00${index + 1}/index.html?name=${classList[index].title}">資料</a>` : ""}</td>`;
         innerHTML += `<td>${list.blank === "" ? "準備中！" : ""}</td>`;

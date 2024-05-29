@@ -38,7 +38,6 @@
     headerRow.innerHTML = '<th>日付</th><th>内容</th>';
     table.appendChild(headerRow);
 
-    const tableBody = document.createElement('td');
 
     updateList.map((list) => {
         const bodyRow = document.createElement('tr');
