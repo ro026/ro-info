@@ -24,6 +24,12 @@
             blank: "",
             keyWord: ["デジタル", "電圧のON/OFF", "10進数", "2進数", "ビット", "バイト", "情報量"],
         },
+        {
+            title: "情報のデジタル表現(2)",
+            slide: "",
+            blank: "",
+            keyWord: ["16進数", "情報量の単位", "メガ", "ギガ", "テラ"],
+        },
     ]
 
     const table = document.createElement('table');
