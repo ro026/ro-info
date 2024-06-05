@@ -30,6 +30,11 @@
             blank: "",
             keyWord: ["16進数", "情報量の単位", "メガ", "ギガ", "テラ"],
         },
+        {
+            title: "情報のデジタル表現(3) 文字のデジタル表現",
+            blank: "",
+            keyWord: ["補数", "文字コード", "JIS", "文字コード", "Unicode"],
+        },
     ]
 
     const table = document.createElement('table');
