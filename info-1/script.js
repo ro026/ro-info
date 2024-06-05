@@ -54,10 +54,10 @@
         const keyWordRow = document.createElement('tr');
         let keyWordRowHTML = "";
 
-        keyWordRowHTML += `<td colspan="3"><ul class="keyword">`
+        keyWordRowHTML += `<td colspan="3"><details><summary>キーワード</summary><ul class="keyword">`
         // キーワードのリスト化
         list.keyWord.map((word) => keyWordRowHTML += `<li>${word}</li>`)
-        keyWordRowHTML += `</ul></td>`;
+        keyWordRowHTML += `</ul></details></td>`;
         keyWordRow.innerHTML = keyWordRowHTML;
 
         table.appendChild(keyWordRow);
