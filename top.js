@@ -34,11 +34,13 @@
     }
 
     const table = document.createElement('table');
+    const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = '<th>日付</th><th>内容</th>';
-    table.appendChild(headerRow);
+    thead.appendChild(headerRow);
+    table.appendChild(thead)
 
-
+    const tbody = document.createElement('tbody');
     updateList.map((list) => {
         const bodyRow = document.createElement('tr');
         let innerHTML = "";
@@ -49,8 +51,10 @@
         innerHTML += `<td>${kind}${list.text}</td > `;
 
         bodyRow.innerHTML = innerHTML;
-        table.appendChild(bodyRow);
+        tbody.appendChild(bodyRow);
     })
+
+    table.appendChild(tbody);
 
     document.getElementById("update-list").appendChild(table);
 
