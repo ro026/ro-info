@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2>XTetra IDE 使用マニュアル</h2>
+
+            <h3>概要</h3>
+            <p>XTetra IDEは、ブラウザ上で実際にDNCLを書いて、実行させることができるものです。</p>
+            <p>以下のリンクからアクセスできます：</p>
+            <p>XTetraは<a href="https://t-daimon.jp/XTetra/ide/" target="_blank">こちら</a></p>
+
+            <h3>画面構成</h3>
+            <img src="./xtetra-1.png" width="50%"/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>番号</th>
+                        <th>内容</th>
+                        <th>説明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>①</td>
+                        <td>プログラム</td>
+                        <td>ここにDNCLでプログラムを記述します。</td>
+                    </tr>
+                    <tr>
+                        <td>②</td>
+                        <td>コンソール</td>
+                        <td>①で書いたプログラムの実行結果がここに出力されます。</td>
+                    </tr>
+                    <tr>
+                        <td>③</td>
+                        <td>ビュワー</td>
+                        <td>出てきた変数について、どのような値が入っているか。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>勉強の方法</h3>
+            <p>プログラムの問題を解くコツ、それは２つあります。</p>
+            <ul style="font-size: 17px; font-weight: 900;">
+                <li>プログラムの中のどこの行を実行しているのか理解すること</li>
+                <li>でてきた変数の値を把握すること</li>
+            </ul>
+            <p>しかしプログラムがどのように動いているか、最初はイメージがつきにくいものです。なのでこの２つを可視化してくれるXTetraを使うのです。</p>
+            <p>処理の流れがわかりにくいループなどに使ってください。</p>
+
+            <h4>操作方法</h4>
+            <p><a
+                    href="https://t-daimon.jp/XTetra/#:~:text=UzUy8kjNyclXNTIIzy%252FKSVE1MgIyVV2NVS2MVC2NVF0tVB0NVR0tVF3NVR1NVJ0cwVKGqpaWUDUWTqoGjgA%253D-,IDEの説明,-入力支援ダイアログ">公式の説明</a>も併せて読んでみてね
+            </p>
+            <ol>
+                <li>①の中にプログラムを記述する</li>
+                <li>①の「ステップ」を押すことで、１行ずつプログラムの行程を確認することができます。</li>
+                <img src="./xtetra-2.png" width="50%" />
+                <li>[B]を押すことで前のステップへ、[C]を押すことで次のステップへ進みます。[D]はスクロールでステップを確認できます。
+                    <ul>
+                        <li>これで<span class="fontBold fontColorRed">プログラムの中のどこの行を実行しているのか理解すること</span>ができます。</li>
+                    </ul>
+                </li>
+                <li>変数に代入などが起こるたびに、②コンソール部分の変数が変化していきます。
+                    <ul>
+                        <li>この場合、[E]の緑色矢印の箇所を実行した直後の変数の値になります。</li>
+                        <li>これで<span class="fontBold fontColorRed">でてきた変数の値を把握すること</span>ができます。</li>
+                    </ul>
+                </li>
+                <li>[E]の赤色矢印は、これから実行するプログラム１行を指します。</li>
+                <li>①の左上の「実行」を押すことで、行程をすっ飛ばしてプログラムの結果だけを見ることができます。</li>
+                <li>[A]のボタンを押してから、プログラムの修正をしてください。</li>
+            </ol>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+
+
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+</script>
+
+
+</html>

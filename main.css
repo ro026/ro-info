@@ -163,3 +163,20 @@ tr:nth-child(even) {
         }
     }
 }
+
+img {
+    max-width: 100%;
+    min-width: 300px;
+}
+
+.fontBold {
+    font-weight: bold;
+}
+
+.fontColorRed {
+    color: rgb(205, 50, 50);
+}
+
+.fontColorBlue {
+    color: rgb(50, 50, 205);
+}
