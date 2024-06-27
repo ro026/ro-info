@@ -4,6 +4,7 @@
     const paths = url.split('/');
     const topPageNum = paths.indexOf('ro-info');
     const nowPath = paths[topPageNum + 1];
+    const nowFileName = paths.at(-1);
     const topAbsPath = "../".repeat(paths.length - paths.indexOf('ro-info') - 2 /** 配列番号が0で始まる + 最後のパスはファイル名であるはず */)
     const isTop = topAbsPath === "";
 
@@ -45,7 +46,8 @@
 
     const breadcrumbElement = headerElement.querySelector(".breadcrumb")
     if (!isTop) {
-        breadcrumbElement.innerHTML = `<a href="../index.html">１つ前へ戻る</a>`
+        const innerHTML = nowFileName === 'index.html' ? `<a href="../index.html">１つ前へ戻る</a>` : `<a href="./index.html">１つ前へ戻る</a>`
+        breadcrumbElement.innerHTML = innerHTML
     }
 })()
 
