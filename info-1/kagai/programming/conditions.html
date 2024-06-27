@@ -42,6 +42,8 @@
         <main>
             <h2>条件分岐</h2>
             <div id="contents">
+                <h3>XTertaで動作を確認しよう</h3>
+                <div id="xtertaQuestion"></div>
             </div>
         </main>
     </div>
@@ -51,6 +53,44 @@
 <script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
 
-<!-- <script src="script.js"></script> -->
+<script>
+    const xtertaList = [
+        {
+            code: `a ← 10
+b ← 20
+
+もし a > 5 ならば
+  | 「aは5以上の数字です」と表示
+を実行する
+`,
+            link: ""
+        },
+        {
+            code: `a ← 10
+b ← 20
+
+もし a > b ならば
+    | 「aはbより大きい数字」と表示
+を実行し、そうでなければ
+    | 「bはaより大きい数字」と表示
+を実行する
+`,
+            link: ""
+        },
+        {
+            code: `「数値を入力してください→」を表示
+x←【外部からの入力】
+
+もし x%3 = 0 ならば
+    | 「3の倍数」を表示
+を実行し，そうでなければ
+    | 「3の倍数でない」を表示
+を実行する
+`,
+            link: ""
+        },
+    ]
+</script>
+<script src="script.js"></script>
 
 </html>

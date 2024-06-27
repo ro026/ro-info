@@ -42,6 +42,8 @@
         <main>
             <h2>配列</h2>
             <div id="contents">
+                <h3>XTertaで動作を確認しよう</h3>
+                <div id="xtertaQuestion"></div>
             </div>
         </main>
     </div>
@@ -51,6 +53,60 @@
 <script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
 
-<!-- <script src="script.js"></script> -->
+<script>
+    const xtertaList = [
+        {
+            code: `list ← [2,5,9,14,18]
+
+list[2] を表示する
+`,
+            link: ""
+        },
+        {
+            code: `list ← [2,5,9,14,18]
+
+i を 0 から 要素数(list) - 1 まで 1 ずつ増やしながら
+    | list[i] を表示
+を繰り返す
+`,
+            link: "",
+            option: `配列の番号は0から始まるものとする
+
+関数 要素数(配列) は、引数で指定した配列の要素数を返す。
+例: 要素数([2,4,7,9]) は 実行すると 4 を返す。
+`,
+        },
+        {
+            code: `list ← [2,5,9,14,18]
+result ← []
+
+i を 0 から 要素数(list) - 1 まで 1 ずつ増やしながら
+    | もし list[i] % 2 = 0 ならば
+    |     | result に list[i] を追加する
+    | を実行する
+を繰り返す
+
+result を表示する
+`,
+            link: "",
+        },
+        {
+            code: `score ← [43, 24, 54, 32, 10]
+sum ← 0
+
+i を 0 から 要素数(score) - 1 まで 1 ずつ増やしながら
+    | tokuten ← score[i]
+    | もし tokuten > 25 ならば
+    |     | sum ← sum + tokuten
+    | を実行する
+を繰り返す
+
+sum を表示する
+`,
+            link: "",
+        },
+    ]
+</script>
+<script src="script.js"></script>
 
 </html>

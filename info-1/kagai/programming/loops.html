@@ -42,6 +42,8 @@
         <main>
             <h2>ループ（繰り返し）</h2>
             <div id="contents">
+                <h3>XTertaで動作を確認しよう</h3>
+                <div id="xtertaQuestion"></div>
             </div>
         </main>
     </div>
@@ -51,6 +53,27 @@
 <script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
 
-<!-- <script src="script.js"></script> -->
+<script>
+    const xtertaList = [
+        {
+            code: `i ← 0
+
+i < 10 の間、
+    | i を表示 
+    | i ← i + 1
+を繰り返す
+`,
+            link: ""
+        },
+        {
+            code: `i を 0 から 10 まで 1 ずつ増やしながら
+    | i * 2 を表示する
+を繰り返す
+`,
+            link: ""
+        },
+    ]
+</script>
+<script src="script.js"></script>
 
 </html>

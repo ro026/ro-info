@@ -3,7 +3,10 @@
     let innerHTML = "";
     xtertaList.map((list, index) => {
         innerHTML += `<h4>第${index + 1}問 <span class="radius backgroundColorBlue"}><a class="textDecorationNone" href="${list.link}" style="font-size: 14px" target="_blank">XTertaで確認する</a></span></h4>`;
-        innerHTML += `<pre style="background: white; border: 1px solid black;">${list.code}</pre>`;
+        innerHTML += `<pre style="background: white; border: 1px solid black; padding: 3px 6px">${list.code}</pre>`;
+        if (list.option) {
+            innerHTML += `<pre>${list.option}</pre>`
+        }
 
         div.innerHTML = innerHTML;
     })
