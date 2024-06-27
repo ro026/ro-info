@@ -180,3 +180,26 @@ img {
 .fontColorBlue {
     color: rgb(50, 50, 205);
 }
+
+.backgroundColorRed {
+    background-color: rgb(205, 50, 50);
+
+    * {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.backgroundColorBlue {
+    background-color: rgb(50, 50, 205);
+
+    * {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.radius {
+    border-radius: 10px;
+    padding: 2px 10px;
+}
