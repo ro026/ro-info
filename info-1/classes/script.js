@@ -40,6 +40,11 @@
             blank: "",
             keyWord: ["サンプリング", "サンプリング周波数", "音声のデータ量", "Hz", "ステレオ", "fps", "フレーム/秒"],
         },
+        {
+            title: "情報のデジタル表現(6) 圧縮",
+            blank: "",
+            keyWord: ["ランレングス法", "展開", "エントロピー符号化", "圧縮率", "mp3", "JPEG", "MPEG", "可逆圧縮", "非可逆圧縮"],
+        },
     ]
 
     const table = document.createElement('table');
