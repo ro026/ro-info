@@ -38,7 +38,7 @@
     /* スマホの場合 */
     @media (max-width: 600px) {
         img {
-            width: 50px;
+            width: 75px;
         }
     }
 
@@ -48,15 +48,15 @@
             width: 150px;
         }
     }
+}
 
-    img.flipped {
-        /* スイッチを押して反転。それでスイッチの押下を演出する */
-        transform: scaleX(-1);
-    }
+.input-val, .light-val {
+    font-size: 20px;
+}
 
-    .input-val, .light-val {
-        font-size: 20px;
-    }
+img.flipped {
+    /* スイッチを押して反転。それでスイッチの押下を演出する */
+    transform: scaleX(-1);
 }
 
 .separator {
@@ -79,6 +79,118 @@
     border-radius: 50%;
 }
 
+/** 入力が2つの場合 */
+.logic-gate-2 {
+    display: grid;
+    grid-template-columns: 20% 10% 10% 30% 10% 20%;
+    grid-template-rows: 30% 10% 10% 10% 10% 20%;
+    grid-template-areas:
+        "A C H K N P"
+        "A D H L N P"
+        "A E I L N P"
+        "B E I L O P"
+        "B F J L O P"
+        "B G J M O P";
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    div {
+        /* border: 1px solid black; */
+        height: 100%;
+        place-content: center;
+    }
+
+    .div1 {
+        grid-area: A;
+    }
+
+    .div2 {
+        grid-area: B;
+    }
+
+    .div3 {
+        grid-area: C;
+    }
+
+    .div4 {
+        grid-area: D;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+    }
+
+    .div5 {
+        grid-area: E;
+    }
+
+    .div6 {
+        grid-area: F;
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+    }
+
+    .div7 {
+        grid-area: G;
+    }
+
+    .div8 {
+        grid-area: H;
+        border-bottom: 2px solid black;
+    }
+
+    .div9 {
+        grid-area: I;
+    }
+
+    .div10 {
+        grid-area: J;
+        border-top: 2px solid black;
+    }
+
+    .div11 {
+        grid-area: K;
+    }
+
+    .div12 {
+        grid-area: L;
+    }
+
+    .div13 {
+        grid-area: M;
+    }
+
+    .div14 {
+        grid-area: N;
+        border-bottom: 2px solid black;
+    }
+
+    .div15 {
+        grid-area: O;
+    }
+
+    .div16 {
+        grid-area: P;
+    }
+}
+
+.box {
+    background-color: #cccccc;
+    border: 1px solid #888888;
+}
+
+.box.full {
+    grid-column: span 2;
+    /* 横に2列分のスペースを占める */
+}
+
+.box.full2 {
+    grid-column: span 3;
+    /* 横に3列分のスペースを占める */
+}
+
+.box.empty {
+    background-color: transparent;
+    border: none;
+}
 
 table .keyword {
     column-count: 3;
