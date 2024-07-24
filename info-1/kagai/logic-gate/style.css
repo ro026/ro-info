@@ -35,11 +35,26 @@
         text-align: center;
     }
 
+    /* スマホの場合 */
+    @media (max-width: 600px) {
+        img {
+            width: 100px;
+        }
+    }
+
+    /* PCの場合 */
+    @media (min-width: 601px) {
+        img {
+            width: 150px;
+        }
+    }
+
     img.flipped {
         /* スイッチを押して反転。それでスイッチの押下を演出する */
         transform: scaleX(-1);
     }
-    .input-val {
+
+    .input-val, .light-val {
         font-size: 20px;
     }
 }

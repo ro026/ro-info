@@ -61,8 +61,11 @@ function toggleImage(element) {
     const inputVal = element.querySelector('.input-val');
     inputVal.textContent = inputVal.textContent === '1' ? 0 : 1;
 
+
     // 親要素を取得
     const parentContainer = element.closest('.logic-gate');
     const lightImg = parentContainer.querySelector(".light");
-    lightImg.src = getFileNameFromURL(lightImg.src) === "denkyuu_off.png" ? "denkyuu_on.png" : "denkyuu_off.png"
+    lightImg.src = getFileNameFromURL(lightImg.src) === "denkyuu_off.png" ? "denkyuu_on.png" : "denkyuu_off.png";
+    const lightVal = parentContainer.querySelector('.light-val');
+    lightVal.textContent = lightVal.textContent === '1(点灯)' ? '0(消灯)' : '1(点灯)';
 }
