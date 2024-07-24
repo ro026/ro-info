@@ -45,7 +45,43 @@
                 <div id="button-before"></div>
                 <div id="button-next"></div>
             </div>
-            <h3>論理回路のイメージ</h3>
+            <h3>論理回路(NAND・NOR・XOR)のイメージ</h3>
+            <div class="logic-gate-2">
+                <div class="div1" onclick="toggleImage(this)">
+                    <img src="switch_denki.png" />
+                    <span class="switch-value">スイッチAの値: <span class="input-val">0</span></span>
+                </div>
+                <div class="div2" onclick="toggleImage(this)">
+                    <img src="switch_denki.png" />
+                    <span class="switch-value">スイッチBの値: <span class="input-val">0</span></span>
+                </div>
+                <div class="div3"></div>
+                <div class="div4"></div>
+                <div class="div5"></div>
+                <div class="div6"></div>
+                <div class="div7"></div>
+                <div class="div8"></div>
+                <div class="div9"></div>
+                <div class="div10"></div>
+                <div class="div11">
+                    <select id="gate-selector" onchange="changeLogic(this)">
+                        <option value="nand">NAND回路</option>
+                        <option value="nor">NOR回路</option>
+                        <option value="xor">XOR回路</option>
+                    </select>
+                </div>
+                <div class="div12">
+                    <!-- 回路 -->
+                    <img src="nand.png" />
+                </div>
+                <div class="div13"></div>
+                <div class="div14"></div>
+                <div class="div15"></div>
+                <div class="div16">
+                    <img src="denkyuu_off.png" class="light" />
+                    <span class="light-value">ライトの値: <span class="light-val" value="0">0(消灯)</span></span>
+                </div>
+            </div>
         </main>
     </div>
 </body>
