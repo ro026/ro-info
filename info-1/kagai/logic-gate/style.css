@@ -14,7 +14,7 @@
 #button-before,
 #button-next {
     button {
-        padding: 0px 20px;
+        padding: 10px 20px;
         text-decoration: none;
         border: none;
         outline: none;
@@ -38,7 +38,7 @@
     /* スマホの場合 */
     @media (max-width: 600px) {
         img {
-            width: 100px;
+            width: 50px;
         }
     }
 
