@@ -128,9 +128,20 @@ function toggleLight(parentContainer) {
 function changeLight(input1, input2, logic, oldValue, parentContainer) {
     let result = "";
     if (logic === "and") {
+        // AND回路
         result = input1 === "1" && input2 === "1" ? "1" : "0";
     } else if (logic === "or") {
+        // OR回路
         result = input1 === "0" && input2 === "0" ? "0" : "1";
+    } else if (logic === "nand") {
+        // NAND回路
+        result = input1 === "1" && input2 === "1" ? "0" : "1";
+    } else if (logic === "nor") {
+        // NOR回路
+        result = input1 === "0" && input2 === "0" ? "1" : "0";
+    } else if (logic === "xor") {
+        // XOR回路
+        result = input1 === input2 ? "0" : "1";
     }
 
     if (result !== oldValue) {
