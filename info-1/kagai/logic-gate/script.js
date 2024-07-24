@@ -1,5 +1,5 @@
 const titles = [
-    { title: "論理回路とは？" },
+    { title: "論理回路・論理演算とは？" },
     { title: "AND回路・OR回路・NOT回路" },
     { title: "基本練習問題" },
     { title: "複数の回路" },
