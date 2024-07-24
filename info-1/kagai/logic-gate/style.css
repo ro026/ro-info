@@ -1,0 +1,76 @@
+.button-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+#button-before {
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+}
+
+#button-next {
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+}
+
+#button-before,
+#button-next {
+    button {
+        padding: 0px 20px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+    }
+}
+
+.logic-gate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    justify-content: center;
+    align-items: center;
+
+    .switch-value {
+        text-align: center;
+    }
+
+    img.flipped {
+        /* スイッチを押して反転。それでスイッチの押下を演出する */
+        transform: scaleX(-1);
+    }
+    .input-val {
+        font-size: 20px;
+    }
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.line {
+    height: 4px;
+    background-color: black;
+    flex-grow: 1;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+
+table .keyword {
+    column-count: 3;
+}
+
+@media only screen and (max-width: 600px) {
+    table .keyword {
+        column-count: 2;
+    }
+}

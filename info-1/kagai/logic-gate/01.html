@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I「論理回路」01_論理回路とは？ | おかだのページ</title>
+    <link rel="icon" href="../../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="logicTitle"><!-- JSでやる --></h2>
+            <div class="button-nav">
+                <div id="button-before"></div>
+                <div id="button-next"></div>
+            </div>
+            <h3>スイッチのイメージ</h3>
+            <div class="logic-gate">
+                <div class="image-container" id="inputA" onclick="toggleImage(this)">
+                    <img src="switch_denki.png" width="140px" />
+                    <div class="switch-value">スイッチAの値: <span class="input-val">0</span></div>
+                </div>
+                <div class="separator">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="image-container">
+                    <img src="denkyuu_off.png" width="150px" class="light" />
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="script.js"></script>
+
+</html>
