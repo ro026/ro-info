@@ -60,5 +60,11 @@
 function formatDate(date) {
     const formattedDate = date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
     return formattedDate;
+}
 
+// 最後のファイル名だけを取得
+function getFileNameFromURL(url) {
+    // URLをスラッシュで分割し、最後の部分を取得
+    const parts = url.split('/');
+    return parts.pop(); // 最後の要素を返す
 }
