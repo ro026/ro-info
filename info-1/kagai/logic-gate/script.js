@@ -52,7 +52,9 @@ if (match) {
     buttonBeforeContainer.appendChild(buttonBefore);
 
     const logicTitleEle = document.getElementById("logicTitle");
-    logicTitleEle.textContent = titles[currentNumber - 1].title;
+    const title = titles[currentNumber - 1].title
+    logicTitleEle.textContent = title;
+    document.title = `情報I「論理回路」${currentNumber}_${title} | おかだのページ`;
 }
 
 /**
