@@ -4,6 +4,11 @@ html {
     background-color: rgba(245, 245, 245, 1);
 }
 
+select {
+    font-size: 20px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
 body {
     display: flex;
     justify-content: center;
