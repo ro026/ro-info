@@ -45,6 +45,8 @@
                 <div id="button-before"></div>
                 <div id="button-next"></div>
             </div>
+            <div id="class-area">
+            </div>
             <h3>論理回路(NAND・NOR・XOR)のイメージ</h3>
             <div class="logic-gate-2">
                 <div class="div1" onclick="toggleImage(this)">
@@ -89,6 +91,17 @@
 <!-- 外部ファイルの読み込み(共通) -->
 <script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="../../../slide_script.js"></script>
+
+<script>
+    const pageInfo = [
+        { title: "論理回路(NAND・NOR・XOR)", start: 31, end: 32 },
+    ]
+    addClassSlide(pageInfo);
+</script>
 
 <script src="script.js"></script>
 

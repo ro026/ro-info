@@ -5,8 +5,7 @@ const titles = [
     { title: "複数の回路" },
     { title: "XOR回路・NAND回路・NOR回路" },
     { title: "応用練習問題" },
-    { title: "問題１：" },
-    { title: "問題２：" },
+    { title: "半加算回路" },
 ]
 
 // 現在のURLを取得してファイル名を抽出
