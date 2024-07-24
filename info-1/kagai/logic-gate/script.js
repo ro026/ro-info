@@ -2,6 +2,7 @@ const titles = [
     { title: "論理回路とは？" },
     { title: "AND回路・OR回路・NOT回路" },
     { title: "基本練習問題" },
+    { title: "複数の回路" },
     { title: "XOR回路・NAND回路・NOR回路" },
     { title: "応用練習問題" },
     { title: "問題１：" },
@@ -27,7 +28,7 @@ if (match) {
     const buttonNext = document.createElement('button');
     buttonNext.textContent = `次のページへ移動`;
 
-    if (nextNumber > 6) {
+    if (nextNumber > titles.length) {
         buttonNext.disabled = true;
     } else {
         buttonNext.onclick = function () {
