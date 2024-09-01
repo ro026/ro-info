@@ -2,6 +2,11 @@
     const updateList = [
         {
             date: "2024/9/1",
+            kind: "update",
+            text: "釜高祭Webページプロジェクトの結果報告をしました"
+        },
+        {
+            date: "2024/9/1",
             kind: "add",
             text: "[情報I] 第10回資料を公開しました"
         },
@@ -64,7 +69,7 @@
 
     const kinds = {
         add: "追加",
-        update: "修正",
+        update: "更新",
         delete: "削除",
     }
 
