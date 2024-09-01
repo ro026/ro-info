@@ -65,7 +65,7 @@
 
         innerHTML += `<td rowspan="2" style="text-align: center;">${index + 1}</td>`
         innerHTML += `<td>${list.title}</td>`;
-        innerHTML += `<td><a href="00${index + 1}/index.html?name=${classList[index].title}">資料</a>`;
+        innerHTML += `<td><a href="${("00" + (index + 1)).slice(-3)}/index.html?name=${classList[index].title}">資料</a>`;
         innerHTML += `<td>${list.blank === "" ? "準備中！" : ""}</td>`;
 
         bodyRow.innerHTML = innerHTML;
