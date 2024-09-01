@@ -46,7 +46,7 @@
 
     const breadcrumbElement = headerElement.querySelector(".breadcrumb")
     if (!isTop) {
-        const innerHTML = nowFileName === 'index.html' ? `<a href="../index.html">１つ前へ戻る</a>` : `<a href="./index.html">１つ前へ戻る</a>`
+        const innerHTML = nowFileName.startsWith('index.html') ? `<a href="../index.html">１つ前へ戻る</a>` : `<a href="./index.html">１つ前へ戻る</a>`
         breadcrumbElement.innerHTML = innerHTML
     }
 })()
