@@ -50,6 +50,16 @@
             blank: "",
             keyWord: ["ピクトグラム", "アフォーダンス", "ユーザインタフェース", "ユーザビリティ", "アクセシビリティ", "バリアフリー"],
         },
+        {
+            title: "前期 期末テスト 対策①",
+            blank: "",
+            keyWord: [],
+        },
+        {
+            title: "前期 期末テスト 対策②",
+            blank: "",
+            keyWord: [],
+        },
     ]
 
     const table = document.createElement('table');
