@@ -64,7 +64,7 @@
 
     const table = document.createElement('table');
     const headerRow = document.createElement('tr');
-    headerRow.innerHTML = '<th></th><th>タイトル</th><th>スライド</th><th>穴埋め</th>';
+    headerRow.innerHTML = '<th></th><th>タイトル</th><th>スライド</th><th>プリント</th>';
     table.appendChild(headerRow);
 
     const tableBody = document.createElement('td');
