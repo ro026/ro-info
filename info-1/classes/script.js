@@ -2,62 +2,62 @@
     const classList = [
         {
             title: "情報とは",
-            blank: "",
+            print: true,
             keyWord: ["情報", "データ", "知識", "情報の特性", "一次情報", "クロスチェック", "PDCAサイクル", "KJ法"],
         },
         {
             title: "情報社会における法",
-            blank: "",
+            print: true,
             keyWord: ["Society5.0", "個人情報", "個人情報保護法", "プライバシー", "知的財産権", "産業財産権", "特許権", "実用新案権", "意匠権", "商標権", "著作権"],
         },
         {
             title: "情報セキュリティ・技術と社会の影響",
-            blank: "",
+            print: true,
             keyWord: ["情報セキュリティ", "機密性", "完全性", "可用性", "マルウェア", "パスワード", "認証", "所有物認証", "生体認証", "知識認証", "二段階認証", "二要素認証"],
         },
         {
             title: "情報のデジタル表現",
-            blank: "",
+            print: true,
             keyWord: ["デジタル", "電圧のON/OFF", "10進数", "2進数", "ビット", "バイト", "情報量"],
         },
         {
             title: "情報のデジタル表現(2)",
-            blank: "",
+            print: true,
             keyWord: ["16進数", "情報量の単位", "メガ", "ギガ", "テラ"],
         },
         {
-            title: "情報のデジタル表現(3) 文字のデジタル表現",
-            blank: "",
+            title: "情報のデジタル表現(3) 2の補数・文字のデジタル表現",
+            print: true,
             keyWord: ["補数", "文字コード", "JIS", "Unicode", "文字化け"],
         },
         {
             title: "情報のデジタル表現(4) 画像のデジタル表現",
-            blank: "",
+            print: true,
             keyWord: ["画像", "標本化", "量子化", "符号化", "画像のデータ量", "色の表現", "カラーコード", "RGB"],
         },
         {
             title: "情報のデジタル表現(5) 音声と動画のデジタル表現",
-            blank: "",
+            print: true,
             keyWord: ["サンプリング", "サンプリング周波数", "音声のデータ量", "Hz", "ステレオ", "fps", "フレーム/秒"],
         },
         {
             title: "情報のデジタル表現(6) 圧縮",
-            blank: "",
+            print: true,
             keyWord: ["ランレングス法", "展開", "エントロピー符号化", "圧縮率", "mp3", "JPEG", "MPEG", "可逆圧縮", "非可逆圧縮"],
         },
         {
             title: "情報デザイン・ユニバーサルデザイン",
-            blank: "",
+            print: true,
             keyWord: ["ピクトグラム", "アフォーダンス", "ユーザインタフェース", "ユーザビリティ", "アクセシビリティ", "バリアフリー"],
         },
         {
             title: "前期 期末テスト 対策①",
-            blank: "",
+            print: false,
             keyWord: [],
         },
         {
             title: "前期 期末テスト 対策②",
-            blank: "",
+            print: false,
             keyWord: [],
         },
     ]
@@ -76,7 +76,11 @@
         innerHTML += `<td rowspan="2" style="text-align: center;">${index + 1}</td>`
         innerHTML += `<td>${list.title}</td>`;
         innerHTML += `<td><a href="${("00" + (index + 1)).slice(-3)}/index.html?name=${classList[index].title}">資料</a>`;
-        innerHTML += `<td>${list.blank === "" ? "準備中！" : ""}</td>`;
+        innerHTML += `<td>${list.print === undefined ? "準備中！" :
+            list.print === true
+                ? `<a href="${("00" + (index + 1)).slice(-3)}/print.html">プリント</a>`
+                : "なし"
+            }</td>`;
 
         bodyRow.innerHTML = innerHTML;
         table.appendChild(bodyRow);

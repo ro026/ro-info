@@ -3,12 +3,18 @@
     const urlParams = new URLSearchParams(window.location.search);
 
     const paths = url.href.split('/');
+
+    const fileName = paths[paths.length - 1];
     const classNum = paths[paths.length - 2];
     const classTitle = urlParams.get('name') ? `『${urlParams.get('name')}』` : '';
 
     let title = `第${Number(classNum)}回`
     title += classTitle;
-    title += `授業スライド`;
+    if (fileName === 'index.html') {
+        title += `授業スライド`;
+    } else if (fileName === 'print.html') {
+        title += `授業プリント`;
+    }
 
     // 動的にタイトル変更。SEO対策は何も考えていない
     document.title = `情報I ${title}| おかだのページ`;
@@ -118,4 +124,15 @@ function addClassSlide(pageInfo) {
         // 画像を全て読み込み、クラスの追加をし終わってからでないと、最後までページ遷移しない
         newSwipper();
     }
+}
+
+function addClassPrint(imageCount) {
+    const printEle = document.getElementsByClassName('print')[0];
+    let innerHTML = '';
+    for (let i = 1; i <= imageCount; i++) {
+        innerHTML += `
+            <img src="print/${i}.jpg" />
+        `
+    }
+    printEle.innerHTML = innerHTML;
 }
