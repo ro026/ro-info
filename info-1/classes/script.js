@@ -65,6 +65,11 @@
             print: false,
             keyWord: [],
         },
+        {
+            title: "プログラミング基礎 - 変数・演算・条件分岐",
+            print: false,
+            keyWord: ['変数','代入','演算','演算子','条件分岐','真','偽'],
+        },
     ]
 
     const table = document.createElement('table');
