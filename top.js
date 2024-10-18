@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2024/10/18",
+            kind: "add",
+            text: "[情報I] 第15回の資料を公開しました"
+        },
+        {
             date: "2024/10/11",
             kind: "add",
             text: "[情報I] 第13回・第14回の資料を公開しました"

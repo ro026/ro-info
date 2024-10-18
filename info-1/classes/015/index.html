@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <div id="class-area">
+                <div>
+                    <h3>変数・代入・演算子(P102~P105) 練習問題</h3>
+                    <div id="xtertaQuestion"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+
+
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="../../../slide_script.js"></script>
+
+<script>
+    const pageInfo = [
+    ]
+    addClassSlide(pageInfo);
+
+    const xtertaList = [
+        {
+            code: `(1) 円の面積を求めるプログラム`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7Y5NCoNADEZP823LGLUmy0yd3kPKQIsohd4fmqiD4gG6KszizZeXn%2Bcwj%2FkFCkgEvkKCcYOg7%2BGc1pfKC1OeP3k8F5FqcHB2ICiVpLIekH1bl%2B15XkETkkD6xeygAu5L6e7%2BNtO%2BbHzcuqfmPSbcCJFK3G0gchhCEBMYuvT5ugZRd3N1OPqp69kc%2FvAb%2BAI%3D",
+        },
+        {
+            code: `(2) 3つの数値の平均を出すプログラム`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=bU87DgIhED3N64dhlZkSsuw9LEzckNjZeHoHWMJqTCjeFx7l9n45MCEz5AolwwtoBcViFn9Z2UPITpgB%2F9N13L3HfS%2F780%2F7AIy4DMX1Cph9k9zwDGRkK1%2BQ6KQYVSRfga6QMKzNrmhPdiqGTzumWGMHHV3VIdYPHhPVFEFsrRzqqhRnvmck9fUf",
+        },
+        {
+            code: `(3) 華氏温度から摂氏温度に変換するプログラム`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=fZDBDgIhDES%2FZu4srFCOJcJ%2FmGii2cQ98P%2BJLcLqxo23l6Ez07Jc6v2xPq8rrEG2II9ohIOD4Xqr9egR2YGMsoIF%2B6FM4oK1yAQq4ILskYyyAoEj8gmJ1SJjPWoCk%2FCy2%2BWjt0Bpn0Fx6KU3Ckuy9Moaf7rULuudf0v3Nx6WuqGHDjF%2B5VjEdi83Yw7gWUu3yfcMJfmZFw%3D%3D",
+        },
+        {
+            code: `(4) 何時間何分何秒形式から秒数に変換するプログラム`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=bVBBDsIwDHuN710GND12UnkIMGkcWCWgB35PWrXQrrtZduw4WXx4ghQcgU8wSvAAZR%2F3NbznrUCivOarX287lsvHh4Z2I1gVQLBcmDi9lL1CDVETTJQYMZtocAZG8FhJ%2F%2BGqYJ9wBHMssWes%2BvdGDathqEjn3Fhwl%2FM7t03ZRugM5KScRVUWpUmGTQnRe8BkW4u8c5KHfQE%3D",
+
+        }, {
+            code: `(5) 秒数から何時間何分何秒形式に変換するプログラム`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7ZDBDoIwDIaf5r%2BPDmU7ljgeBCXRgyxROfj2toTpABNO3rx9aft1%2Fdc%2B4wAyCAS3hzfCpaUChs9xuC06CBbOKCsQmFNFheulHx7dllLnyr07xv60pRxypU0HS6kAO2UihApcwVOqN5MjLN35%2FDvZfIVW5ASvbwYPL2yz1mc4C7resINzGuWbmMVdi4sA1QRyz5SEsoU0TjrwuETdEjXPFfnRWj4s6eYPv4AX"
+        }
+    ]
+</script>
+
+
+<script src="../../kagai/programming/script.js"></script>
+
+
+</html>
