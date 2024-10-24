@@ -27,11 +27,6 @@
             <div class="title">
                 <h1><a href="${topAbsPath}index.html">おかだのページ</a></h1>
             </div>
-            <div class="link">
-                <a href="https://www.facebook.com/profile.php?id=100015394358438" target="_blank" rel="noreferrer noopener">
-                    <i class="fa-brands fa-facebook" style="font-size: 24px; color: #0B0A08"></i>
-                </a>
-            </div>
         </div>
         <nav>
             <ul>${menusHTML}</ul>
