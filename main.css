@@ -1,12 +1,16 @@
 html {
     font-family: "M PLUS Rounded 1c", sans-serif;
-    color: rgb(50, 50, 50);
-    background-color: rgba(245, 245, 245, 1);
+    color: #333;
+    background-color: #f5f5f5;
 }
 
 select {
     font-size: 20px;
     font-family: "M PLUS Rounded 1c", sans-serif;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 body {
@@ -18,104 +22,99 @@ body {
     min-height: 100vh;
     /* ビューポートの高さいっぱいに要素を広げる */
     width: 100vw;
+    background-color: #f0f0f0;
 }
 
 .content {
     width: 80%;
-    background-color: rgba(255, 255, 240, 1);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .headerContents {
-    background-color: rgba(255, 250, 250, 1);
+    background-color: #fafafa;
     padding: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
 
-    h1 {
-        background-color: rgb(103, 159, 190);
+.headerContents h1 {
+    background-color: #67a3be;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
 
-        a {
-            text-decoration: none;
-            color: rgb(255, 255, 255);
-        }
-    }
+.headerContents h1 a {
+    text-decoration: none;
+    color: #fff;
 }
 
 h2 {
-    border-left: 10px solid rgb(50, 50, 205);
+    border-left: 5px solid #3232cd;
     padding-left: 10px;
 }
 
 nav {
     display: flex;
     align-items: center;
-    /* 要素を垂直方向中央に配置 */
-    justify-content: right;
+    justify-content: flex-end;
+    padding: 10px 0;
 }
 
 nav ul {
     list-style-type: none;
-    /* リストのマーカーを削除 */
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
-    font-size: 19px;
     flex-wrap: wrap;
 }
 
 nav li {
-    margin: 0 10px;
-    /* リンク間の間隔を設定 */
+    margin: 0 15px;
     text-align: center;
-    width: 170px;
 }
 
 nav li a {
     text-decoration: none;
-    background-color: transparent;
-    transition: background-color 0.3s;
+    color: #333;
+    padding: 8px 16px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav li a:hover {
-    background-color: #D6D6F5;
+    background-color: #d6d6f5;
+    color: #333;
+    border-radius: 5px;
 }
 
-nav .now-page {
-    background-color: rgb(50, 50, 205);
-
-    a {
-        color: white;
-    }
-}
-
-.headerTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .title h1 {
-        font-weight: 700;
-    }
-}
-
-.breadcrumb {
-    background-color: white;
+nav .now-page a {
+    background-color: #3232cd;
+    color: white;
+    border-radius: 5px;
 }
 
 main {
-    margin: 10px;
+    margin: 20px 0;
 }
 
 footer {
-    background-color: rgb(103, 159, 190);
+    background-color: #67a3be;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    border-radius: 0 0 15px 15px;
 }
 
+/* Responsive adjustments */
 @media only screen and (max-width: 600px) {
-
-    /* スマホ表示の場合 */
     .content {
-        width: 100%
+        width: 100%;
     }
 
-    nav li {
+    nav ul li {
         width: 100%;
     }
 }
@@ -123,55 +122,27 @@ footer {
 table {
     width: 100%;
     border-collapse: collapse;
-}
-
-th {
-    background-color: rgb(103, 159, 190);
-    color: white;
-    text-align: center;
+    margin: 20px 0;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-td {
+    padding: 12px;
     text-align: left;
+    border: 1px solid #ddd;
 }
 
-tr {
-    background-color: white;
+th {
+    background-color: #67a3be;
+    color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
-    /* 偶数行の背景色 */
-}
-
-.swiper-container {
-    width: 100%;
-    margin-bottom: 40px;
-}
-
-.swiper-slide {
-    width: 100%;
-
-    .content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-
-        img {
-            max-width: 100%;
-        }
-    }
+    background-color: #f9f9f9;
 }
 
 img {
     max-width: 100%;
-    /* min-width: 300px; */
+    border-radius: 10px;
 }
 
 .fontBold {
@@ -179,33 +150,30 @@ img {
 }
 
 .fontColorRed {
-    color: rgb(205, 50, 50);
+    color: #cd3232;
 }
 
 .fontColorBlue {
-    color: rgb(50, 50, 205);
+    color: #3232cd;
 }
 
 .backgroundColorRed {
-    background-color: rgb(205, 50, 50);
-
-    * {
-        color: white;
-        text-decoration: none;
-    }
+    background-color: #cd3232;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .backgroundColorBlue {
-    background-color: rgb(50, 50, 205);
+    background-color: #3232cd;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .backgroundColorBlue a {
     color: white;
     text-decoration: none;
-}
-
-.colorWhite {
-    color: white;
 }
 
 .radius {
@@ -223,12 +191,11 @@ img {
 }
 
 .print img {
-    width: 50%
+    width: 50%;
+    margin: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-
-    /* スマホ表示の場合 */
     .print {
         display: block;
     }
@@ -236,4 +203,8 @@ img {
     .print img {
         width: 100%;
     }
+}
+
+pre {
+    overflow: scroll;
 }
