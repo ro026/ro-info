@@ -197,11 +197,11 @@ img {
 
 .backgroundColorBlue {
     background-color: rgb(50, 50, 205);
+}
 
-    a {
-        color: white;
-        text-decoration: none;
-    }
+.backgroundColorBlue a {
+    color: white;
+    text-decoration: none;
 }
 
 .colorWhite {
