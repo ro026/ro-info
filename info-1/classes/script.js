@@ -78,11 +78,13 @@
     ]
 
     const table = document.createElement('table');
+    const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = '<th></th><th>タイトル</th><th>スライド</th><th>プリント</th>';
-    table.appendChild(headerRow);
+    thead.appendChild(headerRow);
+    table.appendChild(thead)
 
-    const tableBody = document.createElement('td');
+    const tbody = document.createElement('tbody');
 
     classList.map((list, index) => {
         const bodyRow = document.createElement('tr');
@@ -98,7 +100,7 @@
             }</td>`;
 
         bodyRow.innerHTML = innerHTML;
-        table.appendChild(bodyRow);
+        tbody.appendChild(bodyRow);
 
         const keyWordRow = document.createElement('tr');
         let keyWordRowHTML = "";
@@ -109,9 +111,9 @@
         keyWordRowHTML += `</ul></details></td>`;
         keyWordRow.innerHTML = keyWordRowHTML;
 
-        table.appendChild(keyWordRow);
+        tbody.appendChild(keyWordRow);
     })
-
+    table.appendChild(tbody);
     document.getElementById("class-list").appendChild(table);
 
 })()
