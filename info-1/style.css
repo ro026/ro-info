@@ -1,9 +1,0 @@
-table .keyword {
-    column-count: 3;
-}
-
-@media only screen and (max-width: 600px) {
-    table .keyword {
-        column-count: 2;
-    }
-}

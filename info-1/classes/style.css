@@ -1,9 +1,11 @@
 table .keyword {
-    column-count: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 @media only screen and (max-width: 600px) {
     table .keyword {
-        column-count: 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
