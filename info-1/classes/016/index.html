@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <div id="class-area">
+                <div>
+                    <h3>条件分岐(P104) </h3>
+                    <div id="xtertaQuestion"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+
+
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="../../../slide_script.js"></script>
+
+<script>
+    const pageInfo = [
+    ]
+    addClassSlide(pageInfo);
+
+    const xtertaList = [
+        {
+            code: `i ← 5 // この値を変えて、動作が変わることを確認しよう
+
+もし i = 5 ならば
+    "i は 5 です" を表示する
+を実行し, そうでなければ
+    "i は 5 ではありません" を表示する
+を実行する
+`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=tZFLEoQgDERP03uMH8IyINzF%2B19gQG1FZzk1VSxCqpPuBxvEIQt0QXC1niFlP7U7QgeE8SwsI89QB5v2jiBI69SrhlOjSvGyF67VbSoizMgT4oqQKE7P8RqisIhf7tqZepggGrLCDLpS7DnOGJXKGZtyy8RtjXBcD2Ky2qUlUHRtgbjuyNYNlNcCT49QhewfoWvWA8M35mi38mK%2Bsp4vmxHKOaipS5%2B671lv1FcGuywGWqQfsazQTbiSJjHTLRJi%2FNsbPPQf"
+        },
+        {
+            code: `① ユーザに整数を入力させ、もし10以上であれば 「10以上です」 と表示し、
+それ以外は「10より小さいです」を表示する`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7VA7DsMgDD3Nk9rNOKGxR5OSe%2FT%2BlygmkETNkKFSp0oeHubxPrzAhMyQB5QqjpAIixUYNN3AXA8EG5EHCEP5zMOQfZjvIGu8Mg4CdKrag6sotVvjvgn9NsC2t9o2iVyQ6TAcCn1ESjVAAeIZmsDUPdWTMx0yC6wQBHnyLsl2ZvNMe%2Fa1o2Xo0h7KfGgz75H12UD5xI8MtlmEbjFf1FpZ0oF5isKVpSvF7jb%2BsPGZTz5%2F8DV4Aw%3D%3D",
+        },
+        {
+            code: `② ユーザに整数を入力させ、偶数か奇数かを表示する`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7VBBDsIwDHuNJbilGV2bYzrKQ%2Fj%2FI0i6DIZ24IC4IeXgJq5j5w4mdEadITRwRs3QPIBC2gnM40HQC%2FqEyhA%2B8jB1L%2BYzSINn5SBBytCeXEUopiFnnbRNE%2FT5V6LTyAWZdrWut9GMbsazc6zJtPNXoaZW0Ysvaro5kU2%2FvXyuebRDbvGxLjvny8ueXAPYwcJweXeePE6sWD5EsPPV8vsIRz55%2FcHX4AE%3D",
+        },
+        {
+            code: `③ ユーザに整数を入力させ、もし2桁の数字であれば「2桁の数字です」を表示する`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7VBBDsIwDHuNJbilKe2aY7p1%2F%2BD%2Fn2ApDZvYEbgh5eAmjh33DiY0RskQ6jihJGjqQCH1Aub%2BIOgNLaIwhM88xGbFfAXp4G1lIECmrh1NRWhMNXsn%2BDRAX7syOpVMkOlQdlGGBhuPtWYdScbeLtLFLMfIgYhFYTqEKCaiBW2ycFV35jii7mGeoTcjWcdimQ%2Fx5j2DLAOU%2FH6DviyCW8zfzqmr27N7uGttbl89VfzZp5z5ZPUHH4MH",
+        },
+        {
+            code: `④ ユーザーに年齢を入力させ、その年齢に応じて料金を表示しなさい。
+5歳未満は無料、5歳以上12歳未満は500円、12歳以上は1000円。`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7ZJNDoIwEIVP8xLdDYNAZzmVchMXxgQTdt7eoS2goolGlyYNeZ2fN19b%2BkM%2FHI5gQmC4GkJRV3AVtIpCIX4D5nHjBX6HYN8WapESjiG8bkAZxsW8BbUgHS7n07F%2FmEMpl21c8isgTRQ0FqWUuilS5BqduyRH%2FOTGNK%2BnU6uHuQlfA6RDcNACbr%2BQ8D62p22bhVlljOaex1LdG8fRHx6noA%2FOI9MYP7lbsRnVMSVwzQ1TlylNW9l8C%2FYYdyhLMP8kRra%2BIPNfTBJkZBuftoHu4PUlZMagv%2FheXAE%3D",
+
+        }, {
+            code: `⑤ グーは0、チョキは1、パーは2で取り扱うじゃんけんゲームを完成させる`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=1ZKxbsMwDES%2FhqshyUlMjpQt%2FUcCdEiHTs3%2Fh5RMyXGKIkDQoYAH%2BnI6HV8MIYM%2BDtIIGCDWYYQ4l8ED5yo5fam%2FtYGn9Rgvze33bvLPkcFMMlCRCNIROAGZiUZzJ6n3eb3cvqymaCjz%2Bfr90ZtTKAkHQFpNiOZmU%2BbVrB7US%2Flk101mNiVmM1sOnsBxbxJUICdzEL216bIT2TJCvycYULLuHE3xmx15U7Y2KoHBbR6Lbfl4eOI37VekrAcfyAmMQjVNijAaMCLrEPsuK%2BmkOfUgzpvt5r4CLZ3crkz%2FT%2FJriJY3EB21fyvD3szpBzIp64cq8%2F9DlN9AhBAlobX6DdEwDH8G58F%2FBw%3D%3D"
+        }
+    ]
+</script>
+
+
+<script src="../../kagai/programming/script.js"></script>
+
+
+</html>
