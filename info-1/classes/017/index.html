@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <div id="class-area">
+                <div>
+                    <h3>条件分岐(P104) </h3>
+                    <div id="xtertaQuestion"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+
+
+<script src="../../../main.js"></script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script src="../../../slide_script.js"></script>
+
+<script>
+    const pageInfo = [
+    ]
+    addClassSlide(pageInfo);
+
+    const xtertaList = [
+        {
+            code: `i を 0 から 2 まで 1 ずつ増やしながら,
+  i を表示する
+を繰り返す
+`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=VY7BDQQxCAOr8T%2Bbywp4wortJf03cESKlTuJBxh7YKI35AfaYb36xvmCxl6oldi3Grkbl1KvYzfnYiBveAGFgEGP0EOzPj9HHjRfQNb8ey4VXklFyroRRJgRESt%2F%2FIIwBAnqixAvbJxg8y8%3D"
+        },
+        {
+            code: `i ← 0
+i ≦ 2 の間,
+  i を表示する
+  i ← i + 1
+を繰り返す
+`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=bY5LDoUwCEVXc%2BaIRmEIpu6l%2B9%2FAo8amk5cQwudcLh0VmmInLlULEn3OnDir1rffsY1oNMcL3tG72LGa0SenuNKMKIHRLuIg4zvh%2FjGWf%2FXrl7fXrLwNcl2%2BSCenl8Xwygc%2FloXEDw%3D%3D"
+        },
+        {
+            code: `練習問題1: 「Hello, World!」 を5回表示する (順次繰り返し文を使って)`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7Y8xCsMwDEXP0uHvtppiaZSCQ2%2FQC7RDwRDo%2FYdaYOHkAp0KGr6l%2F5%2FkNyihXsEEoa5zvDPYxoAlmgmSZkDp0M8jZXUILWecaAwW1JuHpcSCJTwlPGHm9XDEiqQOnEX3V2u7Tyg99k97Xnrv9KXK0M5j1OKbLcAiATanTn%2BBCSwIrE6wDbLM4PAnr7%2F4ifgC",
+        },
+        {
+            code: `練習問題2: 「Hello, World!」 を5回表示する (前条件繰り返し文を使って)`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=ZY6xCsMwDES%2FpcPtshIcaZSLS%2F%2BgP9AOBkOg%2Fz9ULhEuKXg47uR318CEypAMJdcJZC08heWvXiA08iEYtoaTIk2wiqpQxyzgq1NGNB%2FfX73vnjz2d39e3IivDGVUgTlDULeBL3ZQVY8bKSdkOw3%2FG5nnSLKfpg1FUeJMbHSXG3SdlWQf",
+        },
+        {
+            code: `練習問題3: 「Bling-Bang-Bang, Bling-Bang-Bang, Bling-Bang-BangBorn」を表示する`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=zVI7DsIwDD2NR6Q0lCYe7ZLegwlVQiBx%2F4EY2fmUDmwgVVXqPL%2BP3RW8g3SE6AF9Pg%2F2PUBkvYhoRQdoaIpWaVo46YFCz4VkFyOkE1BWC8Y%2BGiYYxsBxbhzM4EgI6%2BP5tt6vB77oK1e6NGkCHIERUgQqbA1%2FVQyKkVRBTHLBoHngrQGt%2B8q2MybaGZMW37l0cO4jXZ%2F08bz%2FJp4I5YUlwGUrJIHnZsdnW9vU6G4sDSY3f5lcJf4ue99b8UFccfk5SBp5Ebel0dEL",
+        },
+        {
+            code: `練習問題4: 0〜20の偶数のみを表示する`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=dVFbEsQgCDtN%2FtHuVvmE1t6l97%2FAglX7mO4Mw2CAJOqOSCgReQaT1QSSvWMMmWs9IZP3vYgQ7Ujo3QApKAw2mglxMRZvjTgWLY5hTm%2B06412WqudU0A6CzdE6Slzif2ymSsUz3wQsdkxvx%2BoMWZIQF7uYtVpQ1KbMbaSILY1Zrg70%2Fd7u9DXX4i3p9D%2F3fEL7WfqOarl4JMnc3L%2FOt5YXEI3v9eQIPkB",
+
+        }, {
+            code: `練習問題5: 九九の表を完成させる`,
+            link: "https://t-daimon.jp/XTetra/ide/?code=7VIxDsIwDHyNJRiQ0lBIPNpV%2Bg%2FY%2BP8HsNM4aVpALGxIVuXE57uz0wd4B%2BkM0QN6yQc7DxC5FCLKZVxVOJWEQt%2BCZIUR0gVISIORjIYJhjFwnFZCEzhSQotbZpfaFVDPh4d8Tip71Mp0BlYTmNGc7fQE9w1B1nKaL6I0282281YEMFSaxXjMdW9A3%2B0wic4IjJAiUB1uNW5bQCgYIUxBd8YVg7YS3piye9%2FY9jPx0GZqtqmtubyj25J34XejfeF20ZXwcw73diFd1wWicF6VWaaQt3o5tXqQ3yoBzp%2FYHK3wQaW57o20kWe1VBsLPtv%2BJ79Mng%3D%3D"
+        }
+    ]
+</script>
+
+
+<script src="../../kagai/programming/script.js"></script>
+
+
+</html>

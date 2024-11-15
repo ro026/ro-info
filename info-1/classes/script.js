@@ -78,6 +78,10 @@
             title: "プログラミング(条件分岐)",
             keyWord: ['条件分岐', '真', '偽', '論理積', 'かつ', '論理和', 'または'],
         },
+        {
+            title: "プログラミング(繰り返し)",
+            keyWord: ['繰り返し', '順次繰り返し文', '前条件繰り返し文'],
+        },
     ]
 
     const table = document.createElement('table');
