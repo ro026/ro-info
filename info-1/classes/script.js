@@ -82,6 +82,14 @@
             title: "プログラミング(繰り返し)",
             keyWord: ['繰り返し', '順次繰り返し文', '前条件繰り返し文'],
         },
+        {
+            title: "プログラミング(配列・関数)",
+            keyWord: ['添字', '引数', '戻り値'],
+        },
+        {
+            title: "プログラミング(ふりかえり問題)",
+            keyWord: [],
+        },
     ]
 
     const table = document.createElement('table');
