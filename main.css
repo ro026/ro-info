@@ -13,6 +13,20 @@ select {
     background-color: #fff;
 }
 
+input, button {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+button {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    border-radius: 10px;
+    background-color: #0288d1;
+}
+
 body {
     display: flex;
     justify-content: center;
