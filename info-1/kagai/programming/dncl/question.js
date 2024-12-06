@@ -213,17 +213,17 @@ function addEventListenersToInputs() {
 function sendData() {
     const scriptURL = "https://script.google.com/macros/s/AKfycbz7VwbvvCRT4jZNjcIw7L4QCm_b8rUKgtzMP04xQzJb5zJhlJDNNW_GpNB-ghHt7OKr2Q/exec";
     const inputs = document.querySelectorAll('input')
-    // const data = {
-    //     name: num,
-    //     email: level,
-    //     message: Array.from(inputs).map(input => input.value).join(','),
-    // };
+    const data = {
+        num,
+        level,
+        answer: Array.from(inputs).map(input => input.value).join(','),
+    }
 
     fetch(scriptURL, {
         method: 'POST',
-        // body: JSON.stringify(data),
+        body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/plain',
         },
     })
         .then(response => {
