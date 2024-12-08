@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2024/12/8",
+            kind: "update",
+            text: "[情報I] 共通テストのプログラミング問題を追加しました"
+        },
+        {
             date: "2024/12/6",
             kind: "add",
             text: "[情報I] 共通テストのプログラミング対策用ページを追加しました"
