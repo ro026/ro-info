@@ -1,0 +1,491 @@
+<!-- https://rikesolo.com/205/#google_vignette -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Attack25</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    body {
+        padding: 32px;
+    }
+
+    .allitembox {
+        width: 1800px;
+        height: 900px;
+        background: white;
+        display: flex;
+    }
+
+    .QuestionAndTeam {
+        width: 900px;
+        height: 900px;
+    }
+
+    /* --------------------- */
+    /* Attack25のマス目表示 */
+    /* --------------------- */
+    .attack25 {
+        width: 1000px;
+        height: 800px;
+        margin: 20px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 190px 190px 190px 190px 190px;
+    }
+
+    .cell {
+        width: 180px;
+        height: 140px;
+        border: 5px solid black;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(92, 92, 92, 1) 50%, rgba(143, 143, 143, 1) 100%);
+    }
+
+    .cell_white {
+        background: linear-gradient(180deg, rgba(239, 237, 240, 1) 50%, rgba(187, 187, 187, 1) 100%);
+    }
+
+    .cell_red {
+        background: linear-gradient(180deg, rgba(215, 15, 36, 1) 50%, rgba(159, 0, 2, 1) 100%);
+        color: white;
+    }
+
+    .cell_blue {
+        background: linear-gradient(180deg, rgba(28, 151, 241, 1) 50%, rgba(0, 82, 186, 1) 100%);
+    }
+
+    .cell_green {
+        background: linear-gradient(180deg, rgba(69, 157, 37, 1) 50%, rgba(0, 136, 2, 1) 100%);
+    }
+
+    .cell_gray {
+        background: linear-gradient(180deg, rgba(92, 92, 92, 1) 50%, rgba(143, 143, 143, 1) 100%);
+    }
+
+    .Qnumber {
+        vertical-align: middle;
+        user-select: none;
+        font-family: 'DM Serif Text', serif;
+        font-size: 70px;
+        margin: 25px;
+    }
+
+    /* --------------------- */
+    /*       問題文          */
+    /* --------------------- */
+    .QuestionContainer {
+        width: 100%;
+        height: 600px;
+        border: 2px solid black;
+        overflow: hidden;
+        position: relative;
+        user-select: none;
+    }
+
+    ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        transition: transform .3s;
+    }
+
+    li {
+        height: 100%;
+        min-width: 100%;
+    }
+
+    #prev,
+    #next {
+        position: absolute;
+        transform: translateY(-1000%);
+        border: none;
+        background: rgba(0, 0, 0, .8);
+        color: #fff;
+        font-size: 24px;
+        padding: 0 8px 4px;
+        cursor: pointer;
+    }
+
+    #prev:hover,
+    #next:hover {
+        opacity: 0.8;
+    }
+
+    #prev {
+        left: 0;
+    }
+
+    #next {
+        right: 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* --------------------- */
+    /* チーム分け/得点表示   */
+    /* --------------------- */
+    .TeamContainer {
+        width: 900px;
+        height: 300px;
+        user-select: none;
+    }
+
+    .Team {
+        margin: 20px 10px 0px;
+        width: 200px;
+        height: 120px;
+        border: solid;
+    }
+
+    .teamName {
+        font-family: 'DM Serif Text', serif;
+    }
+
+    .count {
+        width: 80px;
+        height: 80px;
+        font-size: 75px;
+        margin-left: 50px;
+        text-align: center;
+        font-family: 'DM Serif Text', serif;
+    }
+
+    .TeamRed {
+        background: rgb(255, 0, 0, 0.7);
+        color: white;
+    }
+
+    .TeamBlue {
+        background: rgb(0, 0, 255, 0.65);
+    }
+
+    .TeamGreen {
+        background: rgb(0, 255, 0, 0.6);
+    }
+
+    .TeamWhite {
+        background: white;
+    }
+
+    .answer {
+        border: 4px solid yellow;
+    }
+</style>
+
+<body>
+    <div class="allitembox">
+        <!-- 左側 Attack25の25マスの作成 -->
+        <div class="attack25">
+            <div class="grid">
+                <div class="cell">
+                    <p class="Qnumber">1</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">2</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">3</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">4</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">5</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">6</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">7</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">8</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">9</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">10</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">11</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">12</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">13</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">14</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">15</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">16</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">17</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">18</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">19</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">20</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">21</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">22</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">23</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">24</p>
+                </div>
+                <div class="cell">
+                    <p class="Qnumber">25</p>
+                </div>
+            </div>
+        </div>
+        <!-- 右側の作成 -->
+        <div class="QuestionAndTeam">
+            <!-- チーム分け/得点表示 -->
+            <div class="TeamContainer">
+                <div class="Team TeamRed" id="redTeam" onclick="changeAnswer('red')">
+                    <div class="teamName">RED</div>
+                    <div class="count" id="num_red">0</div>
+                </div>
+                <div class="Team TeamBlue" id="blueTeam" onclick="changeAnswer('blue')">
+                    <div class="teamName">BLUE</div>
+                    <div class="count" id="num_blue">0</div>
+                </div>
+                <div class="Team TeamGreen" id="greenTeam" onclick="changeAnswer('green')">
+                    <div class="teamName">GREEN</div>
+                    <div class="count" id="num_green">0</div>
+                </div>
+                <div class="Team TeamWhite" id="whiteTeam" onclick="changeAnswer('white')">
+                    <div class="teamName">WHITE</div>
+                    <div class="count" id="num_white">0</div>
+                </div>
+                <div class="" onclick="changeAnswer('')">774プロジェクト</div>
+                <div class="" onclick="thinking()">thinking</div>
+                <div class="" onclick="boo()">boo</div>
+            </div>
+        </div>
+        <audio id="redAudio" src="red.mp3" type="audio/mp3"></audio>
+        <audio id="greenAudio" src="green.mp3" type="audio/mp3"></audio>
+        <audio id="blueAudio" src="blue.mp3" type="audio/mp3"></audio>
+        <audio id="whiteAudio" src="white.mp3" type="audio/mp3"></audio>
+        <audio id="booAudio" src="boo.mp3" type="audio/mp3"></audio>
+        <audio id="thinkingAudio" src="thinking.mp3" type="audio/mp3"></audio>
+
+    </div>
+
+    <script>
+        'use strict';
+
+        const redAudio = document.getElementById('redAudio');
+        const greenAudio = document.getElementById('greenAudio');
+        const blueAudio = document.getElementById('blueAudio');
+        const whiteAudio = document.getElementById('whiteAudio');
+        const booAudio = document.getElementById('booAudio');
+        const thinkingAudio = document.getElementById('thinkingAudio');
+
+        let selectColor = "";
+        let selectColorNumber = 0;
+
+        let cell_color = new Array(25).fill(0);
+
+        function changeAnswer(color) {
+            selectColor = color;
+            selectColorNumber = selectColor === "red" ? 1 : selectColor === "blue" ? 2 : selectColor === "green" ? 3 : selectColor === "white" ? 4 : 0;
+
+            thinkingAudio.pause();
+            if (color === 'red') { redAudio.play(); }
+            if (color === 'green') { greenAudio.play(); }
+            if (color === 'blue') { blueAudio.play(); }
+            if (color === 'white') { whiteAudio.play(); }
+
+            const redElement = document.getElementById("redTeam");
+            const blueElement = document.getElementById("blueTeam");
+            const greenElement = document.getElementById("greenTeam");
+            const whiteElement = document.getElementById("whiteTeam");
+
+            redElement.classList.remove('answer');
+            blueElement.classList.remove('answer');
+            greenElement.classList.remove('answer');
+            whiteElement.classList.remove('answer');
+
+            const answerElement = document.getElementById(color + "Team");
+            if (answerElement !== null) {
+                answerElement.classList.add('answer');
+            }
+        }
+
+        {
+            // cell: 色のついたセルに関する配列
+            const cell = document.getElementsByClassName('cell');
+
+            for (let i = 0; i < cell.length; i++) {
+                // マス目のクリックにイベントを設定
+                cell[i].addEventListener('click', () => {
+                    changeColorCell(i);
+                    const changeColors = changeColor(i);
+
+                    // 挟んだマスがあれば、そこも色を変える
+                    if (changeColors.length !== 0) {
+                        // ここでもsetTimeoutしないと、クリックした後すぐに点灯してしまう
+                        setTimeout(() => {
+                            doSomethingLoop(changeColors.length, 0, changeColors)
+                        }, 700);
+                    }
+                });
+
+                function doSomethingLoop(maxCount, k, changeColors) {
+                    if (k < maxCount) {
+                        changeColorCell(changeColors[k])
+                        setTimeout(function () { doSomethingLoop(maxCount, ++k, changeColors) }, 700);
+                    }
+                }
+            }
+
+            function changeColor(changeCellNumber) {
+                /**
+                 *    0  1  2  3  4
+                 *    5  6  7  8  9
+                 *    10 11 12 13 14
+                 *    15 16 17 18 19
+                 *    20 21 22 23 24
+                 */
+
+                const result = [];
+
+                if (selectColorNumber === 0) {
+                    // アタックチャンスなどで色を消す時は、他の色をひっくり返すことはしない
+                    return [];
+                }
+
+                const arrow = ['上', '右上', '右', '右下', '下', '左下', '左', '左上'];
+                const ignoreCells = [
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], // 上
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 18, 19, 23, 24], // 右上
+                    [3, 4, 8, 9, 13, 14, 18, 19, 23, 24], // 右
+                    [3, 4, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // 右下
+                    [15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // 下
+                    [0, 1, 5, 6, 10, 11, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], // 左下
+                    [0, 1, 5, 6, 10, 11, 15, 16, 20, 21], // 左
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 20, 21], // 左上
+                ];
+                // 方向ごとに何セル離れているか
+                const startCellNum = [-5, -4, 1, 6, 5, 4, -1, -6]
+                // 探索を終了する条件
+                const breakConditions = [
+                    (i) => 0 <= i && i <= 4,    // 上
+                    (i) => i % 5 === 4,         // 右上
+                    (i) => i % 5 === 4,         // 右
+                    (i) => i % 5 === 4,         // 右下
+                    (i) => 20 <= i && i <= 24,  // 下
+                    (i) => i % 5 === 0,// 左下
+                    (i) => i % 5 === 0,// 左
+                    (i) => i % 5 === 0,// 左上
+                ]
+                for (let i = 0; i < arrow.length; i++) {
+                    let searchTime = 0;
+                    const searchCellNumbers = [];
+                    for (let j = changeCellNumber + startCellNum[i]; 0 <= j && j < 25; j = j + startCellNum[i]) {
+                        if (ignoreCells[i].includes(changeCellNumber)) {
+                            break;
+                        }
+                        if (searchTime === 0) {
+                            if (cell_color[j] === selectColorNumber || cell_color[j] === 0) {
+                                // 色が同じ、または色がないときはひっくり返らないなので、探索する必要なし
+                                break;
+                            }
+                        } else {
+                            if (cell_color[j] === selectColorNumber) {
+                                // 色がひっくり返る。かつ探索終了
+                                searchCellNumbers.forEach((cell) => {
+                                    if (!result.includes(cell)) {
+                                        result.push(cell);
+                                    }
+                                });
+                                break;
+                            }
+                            if (cell_color[j] === 0) {
+                                break;
+                            }
+                        }
+                        searchTime++;
+                        searchCellNumbers.push(j);
+
+                        if (breakConditions[i](j)) {
+                            break;
+                        }
+                    }
+                }
+                return result;
+            }
+            function changeColorCell(i) {
+                cell_color[i] = selectColorNumber;
+                cell[i].classList.remove('cell_white');
+                cell[i].classList.remove('cell_red');
+                cell[i].classList.remove('cell_blue');
+                cell[i].classList.remove('cell_green');
+                cell[i].classList.remove('cell_gray');
+                if (selectColor === '') { cell[i].classList.add('cell_gray') }
+                if (selectColor === 'red') { cell[i].classList.add('cell_red'); redAudio.currentTime = 0; redAudio.play(); }
+                if (selectColor === 'blue') { cell[i].classList.add('cell_blue'); blueAudio.currentTime = 0; blueAudio.play(); }
+                if (selectColor === 'green') { cell[i].classList.add('cell_green'); greenAudio.currentTime = 0; greenAudio.play(); }
+                if (selectColor === 'white') { cell[i].classList.add('cell_white'); whiteAudio.currentTime = 0; whiteAudio.play(); }
+                let count_red = 0;
+                let count_blue = 0;
+                let count_green = 0;
+                let count_white = 0;
+                for (let j = 0; j < cell.length; j++) {
+                    // j番目のcellの配列の色を確認して、対応する色のカウントを増やす
+                    if (cell[j].classList[1] === "cell_red") { count_red++; }
+                    if (cell[j].classList[1] === "cell_blue") { count_blue++; }
+                    if (cell[j].classList[1] === "cell_green") { count_green++; }
+                    if (cell[j].classList[1] === "cell_white") { count_white++; }
+                }
+                // 色の個数を得点に設定
+                document.getElementById('num_red').textContent = String(count_red);
+                document.getElementById('num_blue').textContent = String(count_blue);
+                document.getElementById('num_green').textContent = String(count_green);
+                document.getElementById('num_white').textContent = String(count_white);
+            }
+        }
+
+        function thinking() {
+            thinkingAudio.currentTime = 0;
+            thinkingAudio.play();
+        }
+        function boo() {
+            booAudio.currentTime = 0;
+            booAudio.play();
+        }
+
+    </script>
+</body>
+
+</html>
