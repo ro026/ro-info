@@ -67,8 +67,20 @@ function renderquestionPage() {
         question.hint ? formatLineBreak(question.hint) : "なし";
     document.title = `おかだのページ | ${title}`;
 
-    document.getElementById("prev-question").href = `./question.html?num=${Number(num) - 1}&level=${level}`;
-    document.getElementById("next-question").href = `./question.html?num=${Number(num) + 1}&level=${level}`;
+    const prevQ = document.getElementById("prev-question");
+    const nextQ = document.getElementById("next-question")
+
+    if (Number(num) === 1) {
+        prevQ.classList = 'prev-next-button-disabled';
+    } else {
+        prevQ.href = `./question.html?num=${Number(num) - 1}&level=${level}`
+    }
+
+    if (Number(num) === 5) {
+        nextQ.classList = 'prev-next-button-disabled';
+    } else {
+        nextQ.href = `./question.html?num=${Number(num) + 1}&level=${level}`;
+    }
 
     addEventListenersToInputs()
 };
