@@ -49,6 +49,16 @@ function renderquestionPage() {
         advanced: "上級"
     };
 
+    const forms = {
+        beginner: `<iframe width="640px" height="480px"
+        src="https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NUMVQxQ0xSNzczNTRIQVFXTE5BVDFaWDdGRSQlQCN0PWcu&embed=true"
+        frameborder="0" marginwidth="0" marginheight="0"
+        style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen
+        mozallowfullscreen msallowfullscreen> </iframe>`,
+        intermediate: ``,
+        advanced: ``,
+    }
+
     // 取得したパラメータに基づいて表示内容を更新
     const question = getquestion(num, level); // 問題データを取得
 
@@ -65,6 +75,11 @@ function renderquestionPage() {
     addLineNumber(question.code);
     document.getElementById('hint-content').innerHTML =
         question.hint ? formatLineBreak(question.hint) : "なし";
+
+    // forms の埋め込みをつける
+    const formsEle = document.getElementById("forms");
+    formsEle.innerHTML += `<p>5問解き終わったらFormsに入力する必要があるので、空欄に埋めた解答は、紙などにメモしておきましょう！</p>`
+
     document.title = `おかだのページ | ${title}`;
 
     const prevQ = document.getElementById("prev-question");
@@ -78,6 +93,21 @@ function renderquestionPage() {
 
     if (Number(num) === 5) {
         nextQ.classList = 'prev-next-button-disabled';
+        // 難易度に応じてFormsの文言を修正する
+        formsEle.innerHTML = `<p>Formsで解答しましょう！</p>`
+        let formsInnerHTML = "";
+        switch (level) {
+            case "beginner":
+                formsInnerHTML = `<p>Formsで解答を送信した後、次は<a href="./question.html?num=1&level=intermediate">中級</a>の問題に取り組みましょう！</p>`;
+                break;
+            case "intermediate":
+                formsInnerHTML = `<p>Formsで解答を送信した後、次は<a href="./question.html?num=1&level=advanced">上級</a>の問題に取り組みましょう！</p>`;
+                break;
+            case "advanced":
+                formsInnerHTML = "<p>Formsで解答を送信して、情報の冬休みの課題は終了です。お疲れ様でした！</p>";
+        };
+
+        formsEle.innerHTML += `${formsInnerHTML}${forms[level]}`;
     } else {
         nextQ.href = `./question.html?num=${Number(num) + 1}&level=${level}`;
     }
