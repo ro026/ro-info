@@ -33,7 +33,7 @@
     </script>
 
     <!-- 共通部分ここまで -->
-    <script src="https://t-daimon.jp/tsuchinoko/tsuchinoko.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://t-daimon.jp/XTetra/dncl.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
@@ -72,6 +72,18 @@
         </main>
     </div>
 </body>
+
+
+<dialog id="confirmation-dialog">
+    <p>「つちのこ」を開いたら、コンソールが以下のようになっているかを確認してください！</p>
+    <p class="output-content output-content-dialog" id="output-content-dialog"></p>
+    <button id="open-tsuchinoko-button">つちのこを開く（新しいタブで実行する）</button>
+    <p>
+        <span style="background-color:white;color:red">構文エラー</span> などになっている場合は正しいプログラムではありません。
+    </p>
+    <p>もう一度考えてみましょう！</p>
+    <button id="close-button">閉じる</button>
+</dialog>
 
 <!-- 外部ファイルの読み込み(共通) -->
 <script src="../../../../main.js"></script>

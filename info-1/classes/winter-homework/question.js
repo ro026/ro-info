@@ -129,3 +129,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+///
+///
+document.getElementById("create-url-button").addEventListener("click", function () {
+    const openTsuchinokoButton = document.getElementById("open-tsuchinoko-button");
+    const closeButton = document.getElementById("close-button");
+
+    let code = [...document.getElementById("code-content").childNodes].map((e) => {
+        if (e.nodeName === "BR") {
+            return "\n"; // <br> を \n に変換
+        }
+        return e.value !== undefined ? e.value : e.textContent;
+    }).join("");
+    let url = "https://t-daimon.jp/XTetra/ide/?code=" + DNCL.compress(code);
+
+    // ダイアログを表示
+    let dialog = document.getElementById("confirmation-dialog");
+    dialog.showModal(); // ダイアログを表示
+
+    const question = getquestion(num, level); // 問題データを取得
+    document.getElementById('output-content-dialog').innerHTML = formatLineBreak(question.output);
+
+    // OKボタンが押された場合（1回だけ実行）
+    openTsuchinokoButton.addEventListener("click", function () {
+        window.open(url, '_blank'); // 新しいタブでURLを開く
+    }, { once: true });
+
+    // キャンセルボタンが押された場合（1回だけ実行）
+    closeButton.addEventListener("click", function () {
+        dialog.close(); // ダイアログを閉じる
+    }, { once: true });
+});
+
+function toHalfWidth(str) {
+    // 全角英数字を半角に変換
+    str = str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+    return str;
+}
+
+function convertToHalfWidthOperators(str) {
+    // 全角記号とその対応する半角記号のマッピング
+    const fullWidthToHalfWidthMap = {
+        '＜': '<',
+        '＞': '>',
+        '＝': '=',
+        '／': '/',
+        '＊': '*',
+        '＋': '+',
+        '－': '-',
+        '％': '%',
+        '（': '(',
+        '）': ')',
+        '［': '[',
+        '］': ']'
+    };
+
+    // 正規表現で全角記号を半角記号に置換
+    return str.replace(/[＜＞＝／＊＋－％（）［］]/g, function (match) {
+        return fullWidthToHalfWidthMap[match];
+    });
+}
+
+
+
+// エラーになるプログラムの書き方はすべて排除
+function correctCodeStyle(str) {
+    return convertToHalfWidthOperators(toHalfWidth(str))
+}
+
+function addEventListenersToInputs() {
+    const inputs = document.querySelectorAll('input'); // DOM にあるすべての <input>
+    inputs.forEach(input => {
+        input.addEventListener('blur', function () {
+            this.value = correctCodeStyle(this.value)
+        });
+    });
+}
