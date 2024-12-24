@@ -32,7 +32,7 @@
     </script>
 
     <!-- 共通部分ここまで -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="winter-homework.css">
 </head>
 
 <body>
@@ -101,8 +101,17 @@
             <p>初級・中級 → 1問正答ごとに3点。</p>
             <p>上級 → 1問正答ごとに5点。</p>
             <h2 id="beginner">初級問題</h2>
+            <div class="question-card" id="list-beginner">
+                <ul></ul>
+            </div>
             <h2 id="intermediate">中級問題</h2>
+            <div class="question-card" id="list-intermediate">
+                <ul></ul>
+            </div>
             <h2 id="advanced">上級問題</h2>
+            <div class="question-card" id="list-advanced">
+                <ul></ul>
+            </div>
         </main>
     </div>
 </body>
@@ -110,5 +119,7 @@
 <!-- 外部ファイルの読み込み(共通) -->
 <script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
+<script src="./question-list.js"></script>
+<script src="./question.js"></script>
 
 </html>
