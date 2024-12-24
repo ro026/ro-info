@@ -49,14 +49,19 @@ function renderquestionPage() {
         advanced: "上級"
     };
 
-    const forms = {
+    const formsIFrame = {
         beginner: `<iframe width="640px" height="480px"
         src="https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NUMVQxQ0xSNzczNTRIQVFXTE5BVDFaWDdGRSQlQCN0PWcu&embed=true"
         frameborder="0" marginwidth="0" marginheight="0"
         style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen
         mozallowfullscreen msallowfullscreen> </iframe>`,
-        intermediate: ``,
-        advanced: ``,
+        intermediate: `<iframe width="640px" height="480px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NURTdPSFBFU1lJUFZMV082SExQN1lXNU1PVSQlQCN0PWcu&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`,
+        advanced: `<iframe width="640px" height="480px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NUNTdYMzY2VFhYQk5BN0FTWlNKOFNYRVJCMiQlQCN0PWcu&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`,
+    }
+    const formsUrl = {
+        beginner: "https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NUMVQxQ0xSNzczNTRIQVFXTE5BVDFaWDdGRSQlQCN0PWcu",
+        intermediate: "https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NURTdPSFBFU1lJUFZMV082SExQN1lXNU1PVSQlQCN0PWcu",
+        advanced: "https://forms.office.com/Pages/ResponsePage.aspx?id=ds18TgAtOUqL_UbB9Idi-9UaOlyqj0VCkneT43cwT5NUNTdYMzY2VFhYQk5BN0FTWlNKOFNYRVJCMiQlQCN0PWcu",
     }
 
     // 取得したパラメータに基づいて表示内容を更新
@@ -107,7 +112,7 @@ function renderquestionPage() {
                 formsInnerHTML = "<p>Formsで解答を送信して、情報の冬休みの課題は終了です。お疲れ様でした！</p>";
         };
 
-        formsEle.innerHTML += `${formsInnerHTML}${forms[level]}`;
+        formsEle.innerHTML += `${formsInnerHTML}${formsIFrame[level]}<p>こちらの<a href="${formsUrl[level]}" target="_blank">リンク</a>からもFormsの投稿ができます。`;
     } else {
         nextQ.href = `./question.html?num=${Number(num) + 1}&level=${level}`;
     }
