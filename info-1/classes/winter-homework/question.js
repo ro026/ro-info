@@ -94,7 +94,7 @@ function renderquestionPage() {
     if (Number(num) === 5) {
         nextQ.classList = 'prev-next-button-disabled';
         // 難易度に応じてFormsの文言を修正する
-        formsEle.innerHTML = `<p>Formsで解答しましょう！</p>`
+        formsEle.innerHTML = `<p>Formsで解答しましょう！最後の問題まで入力して、「送信」を押してください。</p>`
         let formsInnerHTML = "";
         switch (level) {
             case "beginner":
