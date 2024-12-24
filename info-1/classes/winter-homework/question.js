@@ -133,6 +133,9 @@ function formatCodeWithInput(code) {
             case 3:
                 width = 60;
                 break;
+            case 4:
+                width = 120;
+                break;
             case 6:
                 width = 180;
                 break;
