@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2025/1/1",
+            kind: "update",
+            text: "[情報I] 冬休み課題のやり方を追加しました"
+        },
+        {
             date: "2024/12/25",
             kind: "add",
             text: "[情報I] 冬休みの課題の情報を追加しました"
