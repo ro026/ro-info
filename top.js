@@ -1,9 +1,9 @@
 (function () {
     const updateList = [
         {
-            date: "2025/1/21",
+            date: "2025/1/28",
             kind: "add",
-            text: "[情報I] 第22回の授業資料を追加しました"
+            text: "[情報I] 第22回・第23回の授業資料を追加しました"
         },
         {
             date: "2025/1/20",
