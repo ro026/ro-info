@@ -40,7 +40,9 @@
     headerElement.innerHTML = headerHtml;
 
     const breadcrumbElement = headerElement.querySelector(".breadcrumb")
-    if (!isTop) {
+    if (paths.at(-2) === "R7" && nowFileName === "index.html") {
+        breadcrumbElement.innerHTML = `<a href="../../index.html">１つ前へ戻る</a>`;
+    } else if (!isTop) {
         const innerHTML = nowFileName.startsWith('index.html') || nowFileName === 'print.html' ? `<a href="../index.html">１つ前へ戻る</a>` : `<a href="./index.html">１つ前へ戻る</a>`
         breadcrumbElement.innerHTML = innerHTML
     }

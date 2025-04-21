@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>情報I | おかだのページ</title>
-    <link rel="icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="icon" href="../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
     </script>
 
     <!-- 共通部分ここまで -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 
 <body>
@@ -40,23 +40,19 @@
         <div id="header">
         </div>
         <main>
-            <h2>1年生向け 情報Iの授業資料</h2>
-            <p>テスト勉強に役立ててください。もちろん３年生の共通テスト対策にも使えます。</p>
-            <ul>
-                <li><a href="classes/R7/index.html">R7年度</a></li>
-                <li><a href="classes/index.html">R6年度</a></li>
-            </ul>
-            <h2>課外(共通テスト対策)資料は<a href="kagai/index.html">こちら</a></h2>
-            <p></p>
-            <p>共通テスト対策の課外の資料。</p>
+            <h2>情報Iの授業資料</h2>
+            <div id="class-list"></div>
         </main>
     </div>
 </body>
 
 <!-- 外部ファイルの読み込み(共通) -->
-<script src="../main.js"></script>
+<script src="../../../main.js"></script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
-
 <script src="script.js"></script>
+
+<script>
+    addList();
+</script>
 
 </html>
