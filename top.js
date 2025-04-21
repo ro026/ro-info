@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2025/4/21",
+            kind: "add",
+            text: "自己紹介を追加しました"
+        },
+        {
             date: "2025/1/28",
             kind: "add",
             text: "[情報I] プリントを追加しました"
