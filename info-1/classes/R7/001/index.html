@@ -10,6 +10,7 @@
     <title>情報I | おかだのページ</title>
     <link rel="icon" href="../../../../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
@@ -51,6 +52,29 @@
 <script src="../script.js"></script>
 <script>
     addTitle();
+    const materialList = [
+        {
+            wordList: [
+                "情報とは",
+                "情報の特性"
+            ],
+            url: [
+                "information",
+                "info-properties",
+            ]
+        },
+        {
+            wordList: [
+                "情報源",
+                "情報の検証"
+            ],
+            url: [
+                "info-sources",
+                "info-verification",
+            ]
+        }
+    ];
+    addMaterial(materialList);
 </script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
 

@@ -55,3 +55,36 @@ function addTitle() {
     const classNameElement = document.getElementById("class-name");
     classNameElement.innerText = title;
 }
+
+function addMaterial(materialList) {
+    const container = document.getElementById("class-area");
+
+    materialList.forEach((material, index) => {
+        // h3 見出し
+        const h3 = document.createElement("h3");
+        h3.textContent = material.wordList.join("・");
+        container.appendChild(h3);
+
+        // words-list div
+        const wordDiv = document.createElement("div");
+        wordDiv.className = "words-list";
+        wordDiv.innerHTML = "スライド▶︎";
+
+        material.wordList.forEach((word, i) => {
+            const a = document.createElement("a");
+            a.className = "word";
+            a.href = `https://joho-kyoshitsu.com/lexicon/word/${material.url[i]}/index.html?state=noheader`;
+            a.target = "_blank";
+            a.textContent = word;
+            wordDiv.appendChild(a);
+        });
+
+        container.appendChild(wordDiv);
+
+        // 画像
+        const img = document.createElement("img");
+        img.src = `print/${index + 1}.jpg`;
+        container.appendChild(img);
+    });
+
+}
