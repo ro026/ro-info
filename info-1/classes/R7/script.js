@@ -68,13 +68,19 @@ function addMaterial(materialList) {
         // words-list div
         const wordDiv = document.createElement("div");
         wordDiv.className = "words-list";
-        wordDiv.innerHTML = "スライド▶︎";
+        if (material.wordList.length != 0) {
+            wordDiv.innerHTML = "スライド▶︎";
+        }
 
         material.wordList.forEach((word, i) => {
             const a = document.createElement("a");
             a.className = "word";
-            a.href = `https://joho-kyoshitsu.com/lexicon/word/${material.url[i]}/index.html?state=noheader`;
-            a.target = "_blank";
+            if (material.url[i]) {
+                a.href = `https://joho-kyoshitsu.com/lexicon/word/${material.url[i]}/index.html?state=noheader`;
+                a.target = "_blank";
+            } else {
+                a.classList.add("no-link");
+            }
             a.textContent = word;
             wordDiv.appendChild(a);
         });
