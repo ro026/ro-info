@@ -1,0 +1,18 @@
+.words-list {
+    display: flex;
+    align-items: center;
+}
+
+.word {
+    background-color: #F29C33;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0px 5px;
+    vertical-align: middle;
+    text-decoration: none;
+    color: white;
+}
+
+.word.no-link {
+    background-color: #777;
+}
