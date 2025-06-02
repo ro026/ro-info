@@ -15,6 +15,10 @@ const classList = [
         title: "情報のデジタル表現",
         keyWord: ["デジタル", "2進数"],
     },
+    {
+        title: "データの大きさを表す単位・文字のデジタル表現",
+        keyWord: ["ビット", "バイト", "文字コード", "文字化け", "Unicode"],
+    },
 ]
 
 function addList() {

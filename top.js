@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2025/6/3",
+            kind: "add",
+            text: "[情報I] 第1〜第5回の令和7年度版のページを追加しました"
+        },
+        {
             date: "2025/4/21",
             kind: "add",
             text: "[情報I] 令和7年度版のページを追加しました"
