@@ -107,6 +107,20 @@
             e.preventDefault();
             let dialog = "";
             let correctCount = 0;
+            let allFilled = true;
+
+            // 入力がすべて埋まっているか確認
+            allAnswers.forEach((obj) => {
+                const inputEl = document.getElementById(obj.id);
+                if (inputEl.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (!allFilled) {
+                alert("すべての空欄に答えを入力してください。");
+                return;
+            }
 
             allAnswers.forEach((obj, i) => {
                 const inputEl = document.getElementById(obj.id);
