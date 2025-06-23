@@ -57,6 +57,7 @@
     <!-- ロジック本体 -->
     <script>
         let blankCounter = 1;
+        const katakana = ["ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ", "サ", "シ", "ス", "セ", "ソ", "タ", "チ", "ツ", "テ", "ト", "ナ", "ニ", "ヌ", "ネ", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ"];
         const allAnswers = [];
         const urlParams = new URLSearchParams(window.location.search);
         const num = urlParams.get('num');
@@ -80,7 +81,7 @@
                     let inputType = 'text';
                     if (match[0] === '__n__') inputType = 'number';
 
-                    const inputHTML = `<input type="${inputType}" id="${id}" name="${id}" class="blank-input" placeholder="__${blankCounter}__">`;
+                    const inputHTML = `<input type="${inputType}" id="${id}" name="${id}" class="blank-input" placeholder="(${katakana[blankCounter - 1]})">`;
 
                     // 最初の一致箇所だけ置換
                     html = html.replace(match[0], inputHTML);
@@ -113,7 +114,7 @@
                 const isCorrect = userInput === obj.correct;
                 inputEl.style.borderColor = isCorrect ? "green" : "red";
 
-                dialog += `【__${i + 1}__】あなたの答え: ${userInput}\n`;
+                dialog += `(${katakana[i]}あなたの答え: ${userInput}\n`;
                 dialog += isCorrect ? "⭕ 正解！\n" : `❌ 不正解。正解は「${obj.correct}」です。\n`;
                 dialog += `解説：${obj.explanation}\n\n`;
 
