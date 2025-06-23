@@ -65,24 +65,39 @@
         function renderQuiz() {
             const container = document.getElementById('quiz-container');
             container.innerHTML = '';
-            console.log(num);
 
             questions[level][num - 1].question.forEach((q, qIndex) => {
                 let html = q.text;
+                const inputRegex = /(___|\_\_t\_\_|\_\_n\_\_)/g;
+
                 q.answers.forEach((_, aIndex) => {
                     const id = `blank${blankCounter}`;
-                    html = html.replace("___", `<input type="text" id="${id}" name="${id}" class="blank-input" placeholder="__${blankCounter}__">`);
+
+                    // 対象となる穴埋めタイプを検出
+                    const match = inputRegex.exec(html);
+                    if (!match) return;
+
+                    let inputType = 'text';
+                    if (match[0] === '__n__') inputType = 'number';
+
+                    const inputHTML = `<input type="${inputType}" id="${id}" name="${id}" class="blank-input" placeholder="__${blankCounter}__">`;
+
+                    // 最初の一致箇所だけ置換
+                    html = html.replace(match[0], inputHTML);
+
                     allAnswers.push({
                         id,
                         correct: q.answers[aIndex],
                         explanation: q.explanations[aIndex],
+                        type: inputType,
                     });
+
                     blankCounter++;
                 });
 
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'question';
-                questionDiv.innerHTML = `<strong>問題${qIndex + 1}：</strong> ${html}`;
+                questionDiv.innerHTML = `${html}`;
                 container.appendChild(questionDiv);
             });
         }
