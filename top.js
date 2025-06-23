@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2025/6/22",
+            kind: "add",
+            text: "「情報I 共通テスト100点への道 問題集」を追加しました。"
+        },
+        {
             date: "2025/6/3",
             kind: "add",
             text: "[情報I] 第1〜第5回の令和7年度版のページを追加しました"
