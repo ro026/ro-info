@@ -40,6 +40,7 @@
         <div id="header">
         </div>
         <main>
+            <h2 id="question-number"></h2>
             <form id="quiz-form">
                 <div>
                     <label for="studentNumber">番号：</label>
@@ -75,6 +76,9 @@
         function renderQuiz() {
             const container = document.getElementById('quiz-container');
             container.innerHTML = '';
+            const headerNum = document.getElementById('question-number');
+
+            headerNum.innerHTML = `${level} 第${num}問: ${questions[level][num - 1].title}`;
 
             questions[level][num - 1].question.forEach((q, qIndex) => {
                 let html = q.text;
