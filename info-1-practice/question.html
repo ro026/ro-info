@@ -163,24 +163,36 @@
             });
 
             // 送信先URL（GASのURL）
-            const endpoint = "https://script.google.com/macros/s/AKfycbwxLxUZ_EUNGD5BY42RBMi8EuEKa-Xlitzc0xeWfro2VY4-TpzpWIu86iLrVEelivBK/exec";
+            const endpoint = "https://script.google.com/macros/s/AKfycbyPlfoiqbbxt68ObaWpsq8ypWVBuPx4NIO_LcCwmWp0bwuI3UwoMakogPUCrgnJnk9H/exec";
+
+            const studentNumber = document.getElementById("studentNumber").value.trim();
+            const studentName = document.getElementById("studentName").value.trim();
 
             // POST送信
             fetch(endpoint, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
                 body: JSON.stringify({
+                    number: studentNumber,
+                    name: studentName,
                     num,
                     level,
                     answers: answerData
                 })
             })
-                .then(res => res.text())
-                .then(msg => {
-                    console.log("送信完了:", msg);
+                .then(response => {
+                    if (!response.ok) throw new Error('サーバーエラーが発生しました');
+                    return response.json();
                 })
-                .catch(err => {
-                    console.error("送信失敗:", err);
+                .then(data => {
+                    console.log('サーバーからの応答:', data);
+                    console.log('データが正常に送信されました！');
+                })
+                .catch(error => {
+                    console.error('エラー:', error);
+                    console.log('エラーが発生しました: ' + error.message);
                 });
         });
 
