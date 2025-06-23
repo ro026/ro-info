@@ -79,6 +79,14 @@ li {
     flex-shrink: 0;
 }
 
+#quiz-container {
+    background-color: aliceblue;
+}
+
+.question {
+    margin-bottom: 10px;
+}
+
 @media (max-width: 768px) {
     .question-title {
         white-space: normal;
