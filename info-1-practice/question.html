@@ -108,6 +108,7 @@
             let dialog = "";
             let correctCount = 0;
             let allFilled = true;
+            let resultHTML = "";
 
             // 入力がすべて埋まっているか確認
             allAnswers.forEach((obj) => {
@@ -121,22 +122,29 @@
                 alert("すべての空欄に答えを入力してください。");
                 return;
             }
-
-            allAnswers.forEach((obj, i) => {
+            // 採点処理
+            const results = allAnswers.map((obj, i) => {
                 const inputEl = document.getElementById(obj.id);
                 const userInput = inputEl.value.trim();
                 const isCorrect = userInput === obj.correct;
                 inputEl.style.borderColor = isCorrect ? "green" : "red";
-
-                dialog += `(${katakana[i]}あなたの答え: ${userInput}\n`;
-                dialog += isCorrect ? "⭕ 正解！\n" : `❌ 不正解。正解は「${obj.correct}」です。\n`;
-                dialog += `解説：${obj.explanation}\n\n`;
-
                 if (isCorrect) correctCount++;
+
+                return `
+      <div style="border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; border-radius: 6px;">
+        <h4>(${katakana[i]})</h4>
+        <p><strong>あなたの答え：</strong> ${userInput}</p>
+        <p>${isCorrect ? "⭕ <span style='color: green;'>正解！</span>"
+                        : `❌ <span style='color: red;'>不正解。正解は「${obj.correct}」です。</span>`}</p>
+        <p><strong>解説：</strong>${obj.explanation}</p>
+      </div>
+    `;
             });
 
-            dialog = `正解数: ${correctCount} / ${allAnswers.length}\n\n` + dialog;
-            alert(dialog);
+            resultHTML += `<h3>正解数: ${correctCount} / ${allAnswers.length}</h3>`;
+            resultHTML += results.join('');
+
+            document.getElementById("result").innerHTML = resultHTML;
 
             // ★ここに Google Sheets 送信機能を追加できます
         });
