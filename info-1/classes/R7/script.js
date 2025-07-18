@@ -27,6 +27,10 @@ const classList = [
         title: "音声・動画のデジタル表現",
         keyWord: ["サンプリング", "サンプリング周波数", "Hz", "ヘルツ", "ステレオ", "fps"],
     },
+    {
+        title: "データの圧縮",
+        keyWord: ["ランレングス法", "エントロピー符号化", "圧縮率", "ZIP", "mp3", "JPEG", "MPEG", "可逆圧縮"],
+    },
 ]
 
 function addList() {
