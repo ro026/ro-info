@@ -31,6 +31,14 @@ const classList = [
         title: "データの圧縮",
         keyWord: ["ランレングス法", "エントロピー符号化", "圧縮率", "ZIP", "mp3", "JPEG", "MPEG", "可逆圧縮"],
     },
+    {
+        title: "情報デザイン・ユニバーサルデザイン",
+        keyWord: [""],
+    },
+    {
+        title: "前期末テスト対策",
+        keyWord: [""],
+    },
 ]
 
 function addList() {
