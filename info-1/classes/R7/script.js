@@ -39,6 +39,10 @@ const classList = [
         title: "前期末テスト対策",
         keyWord: [""],
     },
+    {
+        title: "プログラミング入門 - Scratchを使おう",
+        keyWord: ["変数", "条件分岐", "繰り返し"],
+    },
 ]
 
 function addList() {
