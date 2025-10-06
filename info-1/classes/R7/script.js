@@ -43,6 +43,10 @@ const classList = [
         title: "プログラミング入門 - Scratchを使おう",
         keyWord: ["変数", "条件分岐", "繰り返し"],
     },
+    {
+        title: "プログラミング②",
+        keyWord: ["関数", "引数", "論理演算"],
+    },
 ]
 
 function addList() {
