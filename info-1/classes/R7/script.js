@@ -47,6 +47,10 @@ const classList = [
         title: "プログラミング②",
         keyWord: ["関数", "引数", "論理演算"],
     },
+    {
+        title: "プログラミング③",
+        keyWord: ["リスト", "配列"],
+    },
 ]
 
 function addList() {
