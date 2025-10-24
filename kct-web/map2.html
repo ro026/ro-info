@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>商工マーケット・機械科側</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./header.css">
+  <link rel="stylesheet" href="./common.css">
+  <style>
+    body {
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      position: relative;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .map {
+      display: grid;
+      grid-template-columns: repeat(25, 1fr);
+      grid-template-rows: repeat(25, 1fr);
+      gap: 1px;
+      width: 980px;
+      height: 760px;
+      border: 10px solid black;
+      background: #ccc;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .map-viewport {
+      /* 画面高からタイトル分を引いた高さ。--title-h はJSで設定 */
+      height: calc(100dvh - var(--title-h, 56px));
+      overflow: auto;
+      /* ←ここだけスクロール可 */
+      -webkit-overflow-scrolling: touch;
+      margin-inline: auto;
+      max-width: 980px;
+      /* 任意：中央寄せを維持したい場合 */
+    }
+
+    /* 追加（任意）：小画面で横スクロールも許可したい場合 */
+    .map-wrap {
+      min-width: 680px;
+      /* 必要に応じて調整 */
+    }
+
+    .room {
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .room.clickable {
+      cursor: pointer;
+    }
+
+    /* --- 部屋配置 --- */
+    .kyu-dou {
+      grid-column: 1 / 4;
+      grid-row: 8 / 19;
+      background: #808080;
+    }
+
+    .wkaidan {
+      grid-column: 13 / 15;
+      grid-row: 2 / 4;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+    }
+
+    .wkaidanmsg {
+      grid-column: 12 / 16;
+      grid-row: 1 / 2;
+      border: none;
+    }
+
+    .mc4 {
+      grid-column: 6 / 13;
+      grid-row: 4 / 7;
+      background: #7fffd4;
+    }
+
+    .tai {
+      grid-column: 16 / 24;
+      grid-row: 4 / 13;
+      background: #7fffd4;
+    }
+
+    .sosei {
+      grid-column: 8 / 13;
+      grid-row: 8 / 14;
+      background: #7fffd4;
+    }
+
+    .souko {
+      grid-column: 11 / 13;
+      grid-row: 14 / 19;
+      background: #808080;
+    }
+
+    .kaidan1 {
+      grid-column: 8 / 11;
+      grid-row: 14 / 15;
+      background: repeating-linear-gradient(to right, #808080, #808080 6px, #ccc 6px, #ccc 12px);
+    }
+
+    .kuukan1 {
+      grid-column: 8 / 11;
+      grid-row: 15 / 16;
+      background: #eee;
+    }
+
+    .kiki {
+      grid-column: 8 / 11;
+      grid-row: 16 / 19;
+      background: #808080;
+    }
+
+    .kaidan2 {
+      grid-column: 13 / 14;
+      grid-row: 15 / 16;
+      background: repeating-linear-gradient(to right, #808080, #808080 6px, #ccc 6px, #ccc 12px);
+    }
+
+    .kaidan3 {
+      grid-column: 14 / 15;
+      grid-row: 15 / 16;
+      background: #808080;
+    }
+
+    .kaidans {
+      grid-column: 14 / 15;
+      grid-row: 16 / 18;
+      background: repeating-linear-gradient(to bottom, #808080, #808080 6px, #ccc 6px, #ccc 12px);
+    }
+
+    .kaidanm {
+      grid-column: 22 / 23;
+      grid-row: 16 / 18;
+      background: repeating-linear-gradient(to bottom, #808080, #808080 6px, #ccc 6px, #ccc 12px);
+    }
+
+    .kaidan4 {
+      grid-column: 9 / 10;
+      grid-row: 24 / 25;
+      background: repeating-linear-gradient(to right, #808080, #808080 6px, #ccc 6px, #ccc 12px);
+    }
+
+    .sangoutou {
+      grid-column: 15 / 22;
+      grid-row: 14 / 19;
+      background: #808080;
+    }
+
+    .msyousetu {
+      grid-column: 3 / 6;
+      grid-row: 22 / 24;
+      background: #7fffd4;
+    }
+
+    .mskikai {
+      grid-column: 6 / 10;
+      grid-row: 22 / 24;
+      background: #7fffd4;
+    }
+
+    .kuukan3 {
+      grid-column: 10 / 12;
+      grid-row: 22 / 25;
+      background: #eee;
+    }
+
+    .msgendouki {
+      grid-column: 12 / 15;
+      grid-row: 22 / 24;
+      background: #808080;
+    }
+
+    .toreroom {
+      grid-column: 15 / 18;
+      grid-row: 22 / 24;
+      background: #808080;
+    }
+
+    .wc {
+      grid-column: 12 / 13;
+      grid-row: 24 / 25;
+      background: #808080;
+    }
+
+    .tuuro1 {
+      grid-column: 15 / 25;
+      grid-row: 3 / 4;
+      background: #808080;
+    }
+
+    .tuuro2 {
+      grid-column: 24 / 25;
+      grid-row: 3 / 6;
+      background: #808080;
+    }
+
+    .tuuro3 {
+      grid-column: 24 / 26;
+      grid-row: 6 / 9;
+      background: #808080;
+    }
+
+    .tuuro4 {
+      grid-column: 14 / 15;
+      grid-row: 4 / 9;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro5 {
+      grid-column: 5 / 15;
+      grid-row: 7 / 8;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro6 {
+      grid-column: 5 / 6;
+      grid-row: 7 / 9;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro7 {
+      grid-column: 14 / 16;
+      grid-row: 6 / 7;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro8 {
+      grid-column: 5 / 6;
+      grid-row: 18 / 22;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro9 {
+      grid-column: 4 / 8;
+      grid-row: 21 / 22;
+      background: #778899;
+      border: none;
+    }
+
+    .tuuro10 {
+      grid-column: 7 / 8;
+      grid-row: 10 / 11;
+      background: #778899;
+      border: none;
+    }
+
+    .kikaityuusya {
+      grid-column: 4 / 7;
+      grid-row: 9 / 18;
+      background: #afeeee;
+    }
+
+    .taimae {
+      grid-column: 13 / 16;
+      grid-row: 9 / 13;
+      background: #afeeee;
+    }
+
+    /* --- 情報ポップアップ --- */
+    .info-box {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      background: #fff;
+      border: 2px solid #333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      padding: 16px;
+      border-radius: 10px;
+      display: none;
+      z-index: 999;
+    }
+
+    .info-title {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .info-content {
+      background: #d0ecff;
+      padding: 6px;
+      margin-top: 8px;
+      margin-bottom: 14px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .info-label {
+      background: #d0ecff;
+      padding: 3px 6px;
+      font-weight: bold;
+      margin-right: 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #ff6666;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>商工マーケット・機械科側</h1>
+  <div class="header"></div>
+  <div class="map-viewport">
+    <div class="map-wrap">
+      <div class="map" id="map">
+        <!-- すべての要素を保持。clickable なものは data-key を追加 -->
+        <div class="room kyu-dou">弓道場</div>
+        <div class="room wkaidan"></div>
+        <div class="room wkaidanmsg"><a href="./map1.html">本校舎側は<br/>こちら</a></div>
+
+        <div class="room mc4 clickable" data-key="mc4" tabindex="0">実習紹介</div>
+        <div class="room tai clickable" data-key="tai" tabindex="0">商工マーケット 生け花展示 その他展示及び発表</div>
+        <div class="room sosei clickable" data-key="sosei" tabindex="0">課題研究展示</div>
+
+        <div class="room souko">倉庫</div>
+        <div class="room kaidan1"></div>
+        <div class="room kuukan1"></div>
+        <div class="room kiki">Ee機器</div>
+
+        <div class="room kaidan2"></div>
+        <div class="room kaidan3"></div>
+        <div class="room kaidans"></div>
+        <div class="room sangoutou">３号棟</div>
+        <div class="room kaidanm"></div>
+
+        <div class="room msyousetu clickable" data-key="msyousetu" tabindex="0">溶接実習</div>
+        <div class="room mskikai clickable" data-key="mskikai" tabindex="0">金属材料磨き</div>
+
+        <div class="room kuukan3"></div>
+        <div class="room msgendouki">原動機実習室</div>
+        <div class="room toreroom">トレーニングルーム</div>
+
+        <div class="room tuuro1"></div>
+        <div class="room tuuro2"></div>
+        <div class="room tuuro3"></div>
+        <div class="room kaidan4"></div>
+        <div class="room wc">WC</div>
+
+        <div class="room kikaityuusya clickable" data-key="kikaityuusya" tabindex="0">イベントブース</div>
+        <!-- ここが問題になっていた箇所。data-key を付与して確実に参照します -->
+        <div class="room taimae clickable" data-key="taimae" tabindex="0">タッチプール</div>
+
+        <div class="room tuuro4"></div>
+        <div class="room tuuro5"></div>
+        <div class="room tuuro6"></div>
+        <div class="room tuuro7"></div>
+        <div class="room tuuro8"></div>
+        <div class="room tuuro9"></div>
+        <div class="room tuuro10"></div>
+      </div>
+
+      <!-- 情報表示エリア -->
+      <div id="infoBox" class="info-box" role="dialog" aria-hidden="true" aria-modal="true">
+        <button class="close-btn" id="infoCloseBtn" aria-label="閉じる">×</button>
+        <div id="infoContent"></div>
+      </div>
+
+      <script>
+        /* ----- データ ----- */
+        const infoData = {
+          mc4: { place: "マシニングセンター", content: "実習紹介 加工品販売", department: "機械科2・1年", spirit: "ナンバープレートを自分でカスタムできます！" },
+          tai: { place: "第一体育館", content: "商工マーケット 生け花展示 その他展示", department: "総合情報科 茶華道部 書道,美術選択者", spirit: "ステージ発表（吹奏楽部,なぎなた部,ダンス披露,商工虎舞委員会）" },
+          sosei: { place: "塑性加工室", content: "課題研究展示 ものづくりコンテスト実演", department: "機械科3年", spirit: "みんなの努力をみていって下さい！" },
+          msyousetu: { place: "溶接鋳造実習室", content: "溶接実習", department: "機械科2・1年", spirit: "溶接の楽しさを伝えたいです！" },
+          mskikai: { place: "機械加工実習室", content: "旋盤 金属材料磨き", department: "機械科2・1年", spirit: "事故らないように気をつけます 安全作業で頑張ります" },
+          kikaityuusya: { place: "機械科駐車場", content: "模擬店", department: "機械科3年", spirit: "焼き鳥 焼きそば かき氷" },
+          taimae: { place: "体育館前", content: "タッチプール", department: "機械科2年（協力：岩手大学）", spirit: "魚といっぱい触れあって欲しいです" }
+        };
+
+        /* ----- ヘルパー ----- */
+        function escapeHtml(s) {
+          return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function isFilled(v) { return v !== undefined && v !== null && String(v).trim() !== ""; }
+
+        /* ----- 要素 ----- */
+        const map = document.getElementById('map');
+        const infoBox = document.getElementById('infoBox');
+        const infoContent = document.getElementById('infoContent');
+        const infoCloseBtn = document.getElementById('infoCloseBtn');
+
+        /* ----- イベント処理: クリック委譲で確実に取得 ----- */
+        map.addEventListener('click', (e) => {
+          const room = e.target.closest('.room');
+          if (!room || !map.contains(room)) return;
+
+          // data-key があればそれを使う。無ければ要素のテキストから推測（安全には data-key 推奨）
+          const key = room.dataset.key || room.getAttribute('data-key') || null;
+          if (key) {
+            showInfo(key);
+            return;
+          }
+
+          // もし inline onclick を残している場合（互換）: 呼び出す
+          const inline = room.getAttribute('onclick');
+          if (inline && inline.includes("showInfo(")) {
+            // 既定の簡易呼び出し (ex: showInfo('taimae'))
+            try {
+              // eslint-disable-next-line no-eval
+              eval(inline);
+            } catch (err) {
+              // ignore
+            }
+          }
+        });
+
+        /* キーボード対応（Enter / Space で開く） */
+        map.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const room = e.target.closest('.room');
+            if (!room) return;
+            const key = room.dataset.key || null;
+            if (key) {
+              e.preventDefault();
+              showInfo(key);
+            }
+          }
+        });
+
+        /* ----- 表示処理 ----- */
+        function showInfo(key) {
+          const data = infoData[key];
+          if (!data) {
+            infoContent.innerHTML = `<div class="info-title">${escapeHtml(key)}</div><div class="info-row">情報がありません。</div>`;
+            infoBox.style.display = 'block';
+            infoBox.setAttribute('aria-hidden', 'false');
+            infoCloseBtn.focus();
+            return;
+          }
+
+          let html = `<div class="info-title">${escapeHtml(data.place || key)}</div>`;
+          if (isFilled(data.content)) {
+            html += `<div class="info-content">${escapeHtml(data.content)}</div>`;
+          }
+          if (isFilled(data.department)) {
+            html += `<div class="info-row"><div class="info-label">企画</div><div>${escapeHtml(data.department)}</div></div>`;
+          }
+          if (isFilled(data.spirit)) {
+            html += `<div class="info-row"><div class="info-label">内容</div><div>${escapeHtml(data.spirit)}</div></div>`;
+          }
+
+          if (html === '') html = `<div class="info-row">詳細情報はありません。</div>`;
+
+          infoContent.innerHTML = html;
+          infoBox.style.display = 'block';
+          infoBox.setAttribute('aria-hidden', 'false');
+          infoCloseBtn.focus();
+        }
+
+        /* ----- 閉じる処理 ----- */
+        function closeInfo() {
+          infoBox.style.display = 'none';
+          infoBox.setAttribute('aria-hidden', 'true');
+        }
+        infoCloseBtn.addEventListener('click', closeInfo);
+        document.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Escape' && infoBox.style.display === 'block') closeInfo();
+        });
+
+        /* ----- 初期：クリック可能な部屋に tabindex 設定（アクセシビリティ） ----- */
+        document.querySelectorAll('.room.clickable').forEach(n => {
+          if (!n.hasAttribute('tabindex')) n.setAttribute('tabindex', '0');
+        });
+      </script>
+      <a href="./index.html" class="back-link">トップページに戻る</a>
+      <script src="./header.js"></script>
+    </div>
+  </div>
+</body>
+
+</html>

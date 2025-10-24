@@ -1,0 +1,66 @@
+.site-header {
+  position: fixed;        /* ← 固定 */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e88e5;
+  color: #fff;
+  padding: 10px 20px;
+  z-index: 10000;         /* 最前面 */
+  box-sizing: border-box;
+}
+
+.header-spacer { height: 60px; } /* JSで上書きされますが、念のための初期値 */
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+/* 既存 .site-header はそのままでOK（position: fixed; z-index: 10000; など） */
+
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+    position: absolute;   /* ← fixed ではなく absolute */
+    top: 100%;            /* ← ヘッダーの直下に配置 */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #1565c0;
+    text-align: center;
+    flex-direction: column;
+    padding: 8px 0;
+    z-index: 10001;       /* ← ヘッダーより上に出したい場合はヘッダー+1 */
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: inline-block;
+  }
+}

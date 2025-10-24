@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics（必要に応じてIDを変更） -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
+    </script>
+    <title>○○文化祭 ジャンル選択</title>
+    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffbe7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffccff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #6a0e1f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        /* ボタン色のサンプル */
+        .red {
+            background-color: #d10000;
+            color: white;
+        }
+
+        .purple {
+            background-color: #a100a1;
+            color: white;
+        }
+
+        .green {
+            background-color: #006400;
+            color: white;
+        }
+
+        .pink {
+            background-color: #ff66b2;
+            color: white;
+        }
+
+        .light-green {
+            background-color: #66ff66;
+            color: white;
+        }
+
+        .dark-green {
+            background-color: #228b22;
+            color: white;
+        }
+
+        .blue {
+            background-color: #4b0082;
+            color: white;
+        }
+
+        .dark-blue {
+            background-color: #00008b;
+            color: white;
+        }
+
+        /* 非表示のコンテンツを隠す */
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        /* スマートフォン対応 */
+        @media (max-width: 768px) {
+            .button-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .button {
+                padding: 14px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>○○文化祭 ジャンル選択</h1>
+        <div class="header"></div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">トップページに戻る</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>見たいジャンルを選んでください</h1>
+        <div class="button-container">
+            <button class="button red" onclick="location.href='content.html?type=grade1'">1学年</button>
+            <button class="button purple" onclick="location.href='content.html?type=grade2'">2学年</button>
+            <button class="button green" onclick="location.href='content.html?type=grade3'">3学年</button>
+            <button class="button pink" onclick="location.href='content.html?type=senkyo'">選択授業</button>
+            <button class="button light-green" onclick="location.href='content.html?type=club'">部活動</button>
+            <button class="button dark-green" onclick="location.href='content.html?type=evening'">定時制</button>
+            <button class="button blue" onclick="location.href='content.html?type=committee'">委員会・SSH等</button>
+            <button class="button dark-blue" onclick="location.href='content.html?type=stage'">ステージ発表</button>
+        </div>
+    </div>
+
+    <script>
+        // コンテンツ表示切替関数（必要に応じて利用）
+        function showContent(contentId) {
+            var contents = document.querySelectorAll('.content');
+            contents.forEach(function (content) {
+                content.classList.remove('active');
+            });
+            var content = document.getElementById(contentId);
+            content.classList.add('active');
+        }
+    </script>
+    <script src="./header.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>本校舎 会場図</title>
+  <link rel="stylesheet" href="./header.css">
+  <link rel="stylesheet" href="./common.css">
+  <style>
+    body {
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      margin: 12px;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .map {
+      width: 980px;
+      height: 760px;
+      display: grid;
+      grid-template-columns: repeat(50, 1fr);
+      grid-template-rows: repeat(40, 1fr);
+      gap: 1px;
+      background: #ccc;
+      border: 2px solid #000;
+      position: relative;
+      user-select: none;
+    }
+
+    .map-viewport {
+      /* 画面高からタイトル分を引いた高さ。--title-h はJSで設定 */
+      height: calc(100dvh - var(--title-h, 56px));
+      overflow: auto;
+      /* ←ここだけスクロール可 */
+      -webkit-overflow-scrolling: touch;
+      margin-inline: auto;
+      max-width: 980px;
+      /* 任意：中央寄せを維持したい場合 */
+    }
+
+    /* 追加（任意）：小画面で横スクロールも許可したい場合 */
+    .map-wrap {
+      min-width: 680px;
+      /* 必要に応じて調整 */
+    }
+
+    .room {
+      box-sizing: border-box;
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+      padding: 2px;
+      background: #fff;
+    }
+
+    .room.clickable {
+      cursor: pointer;
+    }
+
+    /* 部屋レイアウト（元のクラスと一致させてあります） */
+    .kaidan1-1 {
+      grid-column: 1 / 3;
+      grid-row: 2 / 6;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+      border-right: 2px solid #999;
+    }
+
+    .kaidan1-2 {
+      grid-column: 3 / 5;
+      grid-row: 4 / 6;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+    }
+
+    .kaidan1-3 {
+      grid-column: 1 / 5;
+      grid-row: 1 / 2;
+      background: #0000;
+      border: none;
+    }
+
+    .denkikouzi {
+      grid-column: 5 / 16;
+      grid-row: 1 / 7;
+      background: #87cefa;
+    }
+
+    .kigyo {
+      grid-column: 16 / 30;
+      grid-row: 1 / 7;
+      background: #7cfc00;
+    }
+
+    .toilet-men {
+      grid-column: 30 / 33;
+      grid-row: 1 / 6;
+      background: #eee;
+    }
+
+    .toilet-women {
+      grid-column: 33 / 36;
+      grid-row: 1 / 6;
+      background: #eee;
+    }
+
+    .kaidan2-1 {
+      grid-column: 36 / 38;
+      grid-row: 2 / 6;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+      border-right: 2px solid #999;
+    }
+
+    .kaidan2-2 {
+      grid-column: 38 / 40;
+      grid-row: 4 / 6;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+    }
+
+    .kaidan2-3 {
+      grid-column: 36 / 40;
+      grid-row: 1 / 2;
+      background: #0000;
+      border: none;
+    }
+
+    .fusa {
+      grid-column: 1 / 16;
+      grid-row: 10 / 17;
+      background: #808080;
+    }
+
+    .photo {
+      grid-column: 16 / 24;
+      grid-row: 10 / 17;
+      background: #7cfc00;
+    }
+
+    .ai {
+      grid-column: 28 / 32;
+      grid-row: 10 / 17;
+      background: #7cfc00;
+    }
+
+    .volunteer {
+      grid-column: 24 / 28;
+      grid-row: 10 / 17;
+      background: #7cfc00;
+    }
+
+    .seitokai {
+      grid-column: 32 / 36;
+      grid-row: 10 / 17;
+      background: #7cfc00;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .c3 {
+      grid-column: 36 / 43;
+      grid-row: 10 / 17;
+      background: #808080;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .e3 {
+      grid-column: 43 / 51;
+      grid-row: 10 / 17;
+      background: #808080;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .no-entry {
+      grid-column: 40 / 51;
+      grid-row: 1 / 7;
+      background: #808080;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .kaidan3-1 {
+      grid-column: 1 / 3;
+      grid-row: 22 / 28;
+      background: #eee;
+      border: none;
+    }
+
+    .kaidan3-2 {
+      grid-column: 3 / 5;
+      grid-row: 22 / 27;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+      border-right: 2px solid #999;
+      border-left: 2px solid #999;
+    }
+
+    .kaidan3-3 {
+      grid-column: 1 / 5;
+      grid-row: 21 / 22;
+      background: #0000;
+      border: none;
+    }
+
+    .kaidan4-1 {
+      grid-column: 36 / 38;
+      grid-row: 22 / 27;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+      border-right: 2px solid #999;
+    }
+
+    .kaidan4-2 {
+      grid-column: 38 / 40;
+      grid-row: 24 / 27;
+      background: repeating-linear-gradient(to bottom, #ccc, #ccc 6px, #eee 6px, #eee 12px);
+      border: none;
+    }
+
+    .kaidan4-3 {
+      grid-column: 36 / 40;
+      grid-row: 21 / 22;
+      background: #0000;
+      border: none;
+    }
+
+    .densikiki {
+      grid-column: 5 / 16;
+      grid-row: 21 / 28;
+      background: #eee;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .densikeisoku {
+      grid-column: 16 / 30;
+      grid-row: 21 / 28;
+      background: #87cefa;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .toilet-men2 {
+      grid-column: 30 / 33;
+      grid-row: 21 / 27;
+      background: #eee;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .toilet-women2 {
+      grid-column: 33 / 36;
+      grid-row: 21 / 27;
+      background: #eee;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .dennkidennsi {
+      grid-column: 1 / 16;
+      grid-row: 31 / 38;
+      background: #87cefa;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .dennsikeisanki {
+      grid-column: 16 / 30;
+      grid-row: 31 / 38;
+      background: #87cefa;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .EEjunbi {
+      grid-column: 30 / 36;
+      grid-row: 31 / 38;
+      background: #808080;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .syoukou2 {
+      grid-column: 36 / 40;
+      grid-row: 31 / 39;
+      background: #eee;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+      border: 1px solid #000;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    .syoukou1 {
+      grid-column: 40 / 51;
+      grid-row: 31 / 35;
+      background: #eee;
+      border: none;
+    }
+
+    .community {
+      grid-column: 40 / 51;
+      grid-row: 21 / 28;
+      background: #7cfc00;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+
+    .sikiri {
+      grid-column: 1 / 51;
+      grid-row: 17 / 21;
+      background: repeating-linear-gradient(45deg, #000 0px, #000 4px, #808080 4px, #808080 100px);
+      writing-mode: vertical-rl;
+      font-size: 10px;
+    }
+
+    .kome {
+      grid-column: 35 / 42;
+      grid-row: 38 / 40;
+      border: none;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kinsi1 {
+      grid-column: 36 / 38;
+      grid-row: 6 / 7;
+      background: #ff0000;
+    }
+
+    .kinsi2 {
+      grid-column: 36 / 38;
+      grid-row: 10 / 11;
+      background: #ff0000;
+    }
+
+    .kinsi3 {
+      grid-column: 40 / 41;
+      grid-row: 7 / 10;
+      background: #ff0000;
+    }
+
+    .kinsi4 {
+      grid-column: 38 / 40;
+      grid-row: 27 / 28;
+      background: #ff0000;
+    }
+
+    .kinsi5 {
+      grid-column: 50 / 51;
+      grid-row: 28 / 31;
+      background: #ff0000;
+    }
+
+    .kinsi6 {
+      grid-column: 1 / 3;
+      grid-row: 6 / 7;
+      background: #ff0000;
+    }
+
+    .rouka1 {
+      grid-column: 1 / 40;
+      grid-row: 7 / 10;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka2 {
+      grid-column: 3 / 5;
+      grid-row: 6 / 8;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka3 {
+      grid-column: 30 / 36;
+      grid-row: 6 / 8;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka4 {
+      grid-column: 38 / 40;
+      grid-row: 6 / 8;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka5 {
+      grid-column: 1 / 50;
+      grid-row: 28 / 31;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka6 {
+      grid-column: 1 / 5;
+      grid-row: 27 / 29;
+      background: #eee;
+      border: none;
+    }
+
+    .rouka7 {
+      grid-column: 30 / 38;
+      grid-row: 27 / 29;
+      background: #eee;
+      border: none;
+    }
+
+    /* ポップアップ（オーバーレイ）*/
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+    }
+
+    .overlay.show {
+      display: flex;
+    }
+
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    #infoBox {
+      position: relative;
+      z-index: 9999;
+      width: 420px;
+      max-width: calc(100% - 24px);
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
+    }
+
+    .info-title {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .info-content {
+      background: #d0ecff;
+      padding: 6px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .info-label {
+      min-width: 56px;
+      background: #d0ecff;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #ff6666;
+      color: #fff;
+      border: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .info-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        animation: slideUp .18s ease-out;
+      }
+
+      .detail-btn {
+        padding: 14px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>本校舎 会場図</h1>
+  <div class="header"></div>
+
+  <div class="map-viewport">
+    <div class="map-wrap">
+      <div class="map" id="map">
+        <!-- 元の要素をそのまま追加。クリックで情報を出したい要素は data-key 属性を設定 -->
+        <div class="room kaidan1-1"></div>
+        <div class="room kaidan1-2"></div>
+        <div class="room kaidan1-3"></div>
+        <div class="room denkikouzi clickable" data-key="denkikouzi">モノづくりコンテスト実演</div>
+        <div class="room kigyo clickable" data-key="kigyo">企業ブース展示</div>
+        <div class="room toilet-men">WC 男</div>
+        <div class="room toilet-women">WC 女</div>
+
+        <div class="room kaidan2-1"></div>
+        <div class="room kaidan2-2"></div>
+        <div class="room kaidan2-3"></div>
+
+        <div class="room fusa">総合実践室</div>
+        <div class="room photo clickable" data-key="photo">写真展2025</div>
+        <div class="room volunteer clickable" data-key="volunteer">広報委員会</div>
+        <div class="room ai clickable" data-key="ai">AI体験</div>
+        <div class="room seitokai clickable" data-key="seitokai">生徒会企画</div>
+        <div class="room c3">C-Ⅲ</div>
+        <div class="room e3">E-Ⅲ</div>
+
+        <div class="room kaidan3-1"></div>
+        <div class="room kaidan3-2"></div>
+        <div class="room kaidan3-3"></div>
+
+        <div class="room kaidan4-1"></div>
+        <div class="room kaidan4-2"></div>
+        <div class="room kaidan4-3"></div>
+
+        <div class="room densikiki">電子機器実習室</div>
+        <div class="room densikeisoku clickable" data-key="densikeisoku">課題研究・その他の展示</div>
+
+        <div class="room toilet-men2">WC 男</div>
+        <div class="room toilet-women2">WC 女</div>
+
+        <div class="room dennkidennsi clickable" data-key="dennkidennsi">電気金魚すくい 光体験</div>
+        <div class="room dennsikeisanki clickable" data-key="dennsikeisanki">ライントレースカー 3D CAD</div>
+
+        <div class="room EEjunbi">EE準備室</div>
+        <div class="room syoukou1">昇降口</div>
+        <div class="room syoukou2"></div>
+        <div class="room community clickable" data-key="community">PTA展 華道展</div>
+
+        <div class="room kinsi1"></div>
+        <div class="room kinsi2"></div>
+        <div class="room kinsi3"></div>
+        <div class="room kinsi4"></div>
+        <div class="room kinsi5"></div>
+        <div class="room kinsi6"></div>
+
+        <div class="room rouka1"></div>
+        <div class="room rouka2"></div>
+        <div class="room rouka3"></div>
+        <div class="room rouka4"></div>
+        <div class="room rouka5"></div>
+        <div class="room rouka6"></div>
+        <div class="room rouka7"></div>
+
+        <div class="room sikiri"></div>
+        <div class="room kome"><a href="./map2.html">商工マーケット・機械科側はこちら</a></div>
+        <div class="room no-entry">吹抜</div>
+      </div>
+
+      <!-- オーバーレイ（バックドロップ + infoBox）-->
+      <div class="overlay" id="overlay" aria-hidden="true">
+        <div class="backdrop" id="backdrop"></div>
+        <div id="infoBox" role="dialog" aria-modal="true" aria-labelledby="infoTitle" aria-describedby="infoContent">
+          <button class="close-btn" id="closeBtn" aria-label="閉じる">×</button>
+          <div class="info-title" id="infoTitle"></div>
+          <div id="infoContent" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <script>
+        // --- データ（必要に応じて編集） ---
+        const infoData = {
+          denkikouzi: {
+            place: "電気工事実習室",
+            content: "モノづくりコンテスト「電気工事部門」課題制作実演",
+            department: "電気電子科２年",
+            spirit: "課題制作を実演します",
+            ikigomi: "頑張ります！"
+          },
+          kigyo: {
+            place: "課題研究室",
+            content: "",        // 空は無視される
+            department: "",     // 空は無視される
+            spirit: "",         // 空は無視される
+            ikigomi: ""
+          },
+          photo: {
+            place: "ビジネス実務室",
+            content: "写真展示",
+            department: "写真部",
+            spirit: "写真部の個性豊かな作品を楽しんでください！",
+            ikigomi: ""
+          },
+          volunteer: {
+            place: "第3簿記実務室",
+            content: "クラス新聞展示 校内スポーツ新聞",
+            department: "広報委員会",
+            spirit: "クラス新聞展示 校内スポーツ新聞",
+            ikigomi: ""
+          },
+          ai: {
+            place: "第2簿記実務室",
+            content: "AI体験",
+            department: "☆☆☆☆",
+            spirit: "",
+            ikigomi: ""
+          },
+          seitokai: {
+            place: "第1簿記実習室",
+            content: "生徒会企画",
+            department: "生徒会",
+            spirit: "フォトスポット",
+            ikigomi: "みんなと一緒に商工祭エンジョイ！"
+          },
+          densikeisoku: {
+            place: "電子計測実習室",
+            content: "課題研究 展示",
+            department: "電気電子科３年",
+            spirit: "火力発電 水力発電 ラジオ ストラックアウト びりびり棒 電力調節器    テスター 電子機器組み立て３級課題",
+            ikigomi: "楽しませるように頑張ります"
+          },
+          dennkidennsi: {
+            place: "電気電子実習室",
+            content: "電気金魚すくい 光体験",
+            department: "電気電子科３・１年",
+            spirit: "おもちゃの金魚すくいです 景品あります",
+            ikigomi: "電気の面白さを伝えたいです"
+          },
+          dennsikeisanki: {
+            place: "電子計算機実習室",
+            content: "ライントレースカー ３Ｄ-ＣＡＤ",
+            department: "電気電子科３年",
+            spirit: "３次元CADの紹介",
+            ikigomi: "楽しさを伝えたいです"
+          },
+          community: {
+            place: "コミュニティホール",
+            content: "・PTAバザー＆PTA作品展・茶華道部〈お茶会〉",
+            department: "PTA 茶華道部",
+            spirit: "※バザー【26日のみ】※お茶会【26日午前のみ】",
+            ikigomi: ""
+          }
+        };
+
+        // --- ヘルパー ---
+        function isFilled(val) {
+          return val !== undefined && val !== null && String(val).replace(/\s/g, '') !== '';
+        }
+        function escapeHtml(s) {
+          return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+
+        // --- 要素取得 ---
+        const map = document.getElementById('map');
+        const overlay = document.getElementById('overlay');
+        const backdrop = document.getElementById('backdrop');
+        const infoBox = document.getElementById('infoBox');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoContent = document.getElementById('infoContent');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // イベント委譲：クリック対象の .room を探し data-key を読み取る
+        map.addEventListener('click', (e) => {
+          const room = e.target.closest('.room');
+          if (!room || !map.contains(room)) return;
+          const key = room.dataset.key;
+          if (!key) return; // data-key が無ければ情報表示しない
+          openInfo(key);
+        });
+
+        function openInfo(key) {
+          const info = infoData[key];
+          // info が無ければ簡易メッセージを表示（任意）
+          if (!info) {
+            infoTitle.textContent = key;
+            infoContent.innerHTML = '<div class="info-row">情報が登録されていません。</div>';
+            showOverlay();
+            return;
+          }
+
+          // タイトル（place） — 無ければ key を表示
+          infoTitle.textContent = isFilled(info.place) ? info.place : key;
+
+          // 本文を組み立て（空要素は出さない）
+          let html = '';
+          if (isFilled(info.content)) {
+            html += `<div class="info-content">${escapeHtml(info.content)}</div>`;
+          }
+          if (isFilled(info.department)) {
+            html += `<div class="info-row"><div class="info-label">企画</div><div>${escapeHtml(info.department)}</div></div>`;
+          }
+          if (isFilled(info.spirit)) {
+            html += `<div class="info-row"><div class="info-label">内容</div><div>${escapeHtml(info.spirit)}</div></div>`;
+          }
+          if (isFilled(info.ikigomi)) {
+            html += `<div class="info-row"><div class="info-label">意気込み</div><div>${escapeHtml(info.ikigomi)}</div></div>`;
+          }
+
+          if (html === '') {
+            html = `<div class="info-row">詳細情報はありません。</div>`;
+          }
+
+          infoContent.innerHTML = html;
+          showOverlay();
+        }
+
+        function showOverlay() {
+          overlay.classList.add('show');
+          overlay.setAttribute('aria-hidden', 'false');
+          // フォーカス移動（アクセシビリティ）
+          closeBtn.focus();
+        }
+        function hideOverlay() {
+          overlay.classList.remove('show');
+          overlay.setAttribute('aria-hidden', 'true');
+        }
+
+        // 閉じる操作
+        closeBtn.addEventListener('click', hideOverlay);
+        backdrop.addEventListener('click', hideOverlay);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && overlay.classList.contains('show')) hideOverlay();
+        });
+
+        // タブ操作サポート（必要なら）
+        (function addTabIndex() {
+          document.querySelectorAll('.room.clickable').forEach(n => n.setAttribute('tabindex', '0'));
+        })();
+      </script>
+      <a href="./index.html" class="back-link">トップページに戻る</a>
+      <script src="./header.js"></script>
+    </div>
+  </div>
+</body>
+
+</html>
