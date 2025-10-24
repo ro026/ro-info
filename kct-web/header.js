@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <header class="site-header" role="banner" aria-label="サイトヘッダー">
         <div class="logo"><a href="index.html">文化祭2025</a></div>
         <nav class="nav-links" id="navLinks" role="navigation" aria-label="メインメニュー">
-          <a href="index.html">トップ</a>
+          <a href="index.html">トップページ</a>
           <a href="map1.html">マップ</a>
           <a href="dashimono.html">出し物一覧</a>
         </nav>
