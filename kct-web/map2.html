@@ -332,6 +332,22 @@
       cursor: pointer;
       font-weight: bold;
     }
+
+    @media (max-width: 600px) {
+      .info-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        animation: slideUp .18s ease-out;
+      }
+
+      .detail-btn {
+        padding: 14px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 
