@@ -48,6 +48,24 @@
   color: #fff;
 }
 
+.enquete-links a {
+  color: #128EF7;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+
+}
+
+.enquete-links .enquete-button {
+  background-color: #E1FF09;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0px 5px;
+  border-radius: 4px;
+  text-align: center;
+}
+
 /* 既存 .site-header はそのままでOK（position: fixed; z-index: 10000; など） */
 
 @media (max-width: 700px) {

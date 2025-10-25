@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerHTML = `
       <header class="site-header" role="banner" aria-label="サイトヘッダー">
         <div class="logo"><a href="index.html">文化祭2025</a></div>
+        <nav class="enquete-links" id="enqueteLinks" role="navigation" aria-label="アンケート">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScwNg5AvR-tHtpqriAVSfF2MpweDPc0KZEA1hFai82nclxg4A/viewform" target="_blank">
+          <div href="index.html" class="enquete-button">
+            アンケートのご協力<br/>よろしくお願いします！
+          </div>
+        </a>
+        </nav>
         <nav class="nav-links" id="navLinks" role="navigation" aria-label="メインメニュー">
           <a href="index.html">トップページ</a>
           <a href="map1.html">マップ</a>
