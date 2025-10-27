@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <ol>
+                <li>Scratchの使い方 → <a href="https://tool-zukan.com/column/4228/#block3">参考ページ</a></li>
+                <li>問題を解く</li>
+                <li>手を挙げてチェックをもらう</li>
+                <li>次の問題を解く</li>
+                <table>
+                    <thead>
+                        <th>番号</th>
+                        <th>問題</th>
+                        <th>ゴール</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ネコを動かそう！</td>
+                            <td>
+                                <ul>
+                                    <li>目標<ul>
+                                            <li>キーボードでキャラクターを動かす。</li>
+                                        </ul>
+                                    </li>
+                                    <li>条件<ul>
+                                            <li>矢印キーで上下左右に動くようにする。ステージの端についたら跳ね返る。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>あいさつプログラム</td>
+                            <td>
+                                <ul>
+                                    <li>目標<ul>
+                                            <li>キャラクターが自分の名前を入力した人にあいさつする。</li>
+                                        </ul>
+                                    </li>
+                                    <li>条件<ul>
+                                            <li>「あなたの名前は？」と聞く。入力した名前に応じて「こんにちは、〇〇さん！」と話す</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>クイズゲーム</td>
+                            <td>
+                                <ul>
+                                    <li>目標<ul>
+                                            <li>自分で問題を出して、正解・不正解を判定する。</li>
+                                        </ul>
+                                    </li>
+                                    <li>条件<ul>
+                                            <li>3問出題（例：「1+1は？」など）。正解なら「すごい！」、間違いなら「ざんねん！」</li>
+                                        </ul>
+                                    </li>
+                                    <li>ヒント<ul>
+                                            <li>自分で用意するクイズは、「変数」の「リスト」を使うこと。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                </table>
+            </ol>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+<script src="../../../../main.js"></script>
+<script src="../script.js"></script>
+<script>
+    addTitle();
+    const materialList = [
+    ];
+    addMaterial(materialList);
+</script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</html>
