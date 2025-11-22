@@ -76,6 +76,13 @@
         .class-panel {
             margin-bottom: 2rem;
         }
+
+        #everyone_project {
+            height: 800px;
+            overflow: scroll;
+            border: solid 2px #1565c0;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -292,11 +299,6 @@
             const panel = document.createElement("div");
             panel.classList.add("class-panel");
             panel.dataset.class = String(classNum);   // data-class="1" など
-
-            // 見出し
-            const header = document.createElement("h4");
-            header.textContent = `1年${classNum}組の作品`;
-            panel.appendChild(header);
 
             const list = document.createElement("ul");
             list.style.listStyle = "none";
