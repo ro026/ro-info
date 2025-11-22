@@ -45,6 +45,37 @@
         .title {
             font-size: 20px;
         }
+
+        #class-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+            margin-bottom: 1rem;
+            list-style: none;
+        }
+
+        #class-tabs li {
+            margin: 0;
+        }
+
+        #class-tabs a {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        #class-tabs a.active {
+            font-weight: bold;
+            background-color: #1565c0;
+            color: white;
+        }
+
+        .class-panel {
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 
@@ -60,12 +91,13 @@
                 <li><a href="#everyone">みんなの作品</a></li>
             </ul>
             <h3 id="everyone">みんなの作品</h3>
-            <ul>目次
+            <ul id="class-tabs">
                 <li><a href="#class-1">1組の作品</a></li>
                 <li><a href="#class-2">2組の作品</a></li>
                 <li><a href="#class-3">3組の作品</a></li>
                 <li><a href="#class-4">4組の作品</a></li>
             </ul>
+
             <div id="everyone_project"></div>
             <h3 id="answer">プログラミング演習の答え</h3>
             <ul>
@@ -248,57 +280,97 @@
     }
     ]
 
-    projectsEle.innerHTML = ""; // 念のためリセット
 
-    projects.forEach(classProjects => {
-        const classNum = classProjects.class;
-        const classProject = classProjects.project;
+    function createPanels() {
+        projectsEle.innerHTML = "";
 
-        // ★ ヘッダー（1年1組～のテキストにしたいならここを調整）
-        const header = document.createElement("h4");
-        header.id = `class-${classNum}`;
-        header.textContent = `1年${classNum}組の作品`;
-        projectsEle.appendChild(header);
+        projects.forEach(classProjects => {
+            const classNum = classProjects.class;
+            const classProject = classProjects.project;
 
-        // ★ このクラス専用のリスト
-        const list = document.createElement("ul");
-        list.style.listStyle = "none";
-        list.style.padding = "0";
+            // クラスごとのパネル
+            const panel = document.createElement("div");
+            panel.classList.add("class-panel");
+            panel.dataset.class = String(classNum);   // data-class="1" など
 
-        classProject.forEach(project => {
-            const item = document.createElement("li");
-            item.style.marginBottom = "1rem";
-            item.style.borderBottom = "1px solid #ccc";
-            item.style.paddingBottom = "0.5rem";
+            // 見出し
+            const header = document.createElement("h4");
+            header.textContent = `1年${classNum}組の作品`;
+            panel.appendChild(header);
 
-            // 出席番号（1108 → 1年1組8番 など）
-            const name = document.createElement("span");
-            name.classList.add("number");
-            name.textContent = convertCode(project.number);
+            const list = document.createElement("ul");
+            list.style.listStyle = "none";
+            list.style.padding = "0";
 
-            // タイトル＋リンク
-            const link = document.createElement("a");
-            link.href = project.url;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.classList.add("title");
-            link.textContent = project.title;
+            classProject.forEach(project => {
+                const item = document.createElement("li");
+                item.style.marginBottom = "1rem";
+                item.style.borderBottom = "1px solid #ccc";
+                item.style.paddingBottom = "0.5rem";
 
-            // 説明
-            const description = document.createElement("div");
-            description.textContent = project.description;
+                const numberSpan = document.createElement("span");
+                numberSpan.classList.add("number");
+                numberSpan.textContent = convertCode(project.number);
 
-            item.appendChild(name);
-            item.appendChild(document.createTextNode(" ")); // 番号とタイトルの間にスペース
-            item.appendChild(link);
-            item.appendChild(description);
+                const link = document.createElement("a");
+                link.href = project.url;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.classList.add("title");
+                link.textContent = project.title;
 
-            list.appendChild(item);
+                const description = document.createElement("div");
+                description.textContent = project.description;
+
+                item.appendChild(numberSpan);
+                item.appendChild(document.createTextNode(" "));
+                item.appendChild(link);
+                item.appendChild(description);
+
+                list.appendChild(item);
+            });
+
+            panel.appendChild(list);
+            projectsEle.appendChild(panel);
+        });
+    }
+
+    // タブ切り替え処理
+    function setupTabs() {
+        const tabs = document.querySelectorAll("#class-tabs a[href^='#class-']");
+
+        function showClass(classNum) {
+            document.querySelectorAll(".class-panel").forEach(panel => {
+                panel.style.display = (panel.dataset.class === String(classNum)) ? "block" : "none";
+            });
+
+            // タブの見た目用（選択中タブに active クラス）
+            tabs.forEach(tab => {
+                const tabClass = tab.getAttribute("href").replace("#class-", "");
+                if (tabClass === String(classNum)) {
+                    tab.classList.add("active");
+                } else {
+                    tab.classList.remove("active");
+                }
+            });
+        }
+
+        tabs.forEach(tab => {
+            const classNum = tab.getAttribute("href").replace("#class-", "");
+            tab.dataset.class = classNum;
+
+            tab.addEventListener("click", e => {
+                e.preventDefault(); // ページ内ジャンプを止める
+                showClass(classNum);
+            });
         });
 
-        // ★ ヘッダーのあとにこのクラスのリストをくっつける
-        projectsEle.appendChild(list);
-    });
+        // 初期表示：1組
+        showClass(1);
+    }
+
+    createPanels();
+    setupTabs();
 </script>
 <!-- 外部ファイルの読み込み(共通)ここまで -->
 
