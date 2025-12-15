@@ -17,7 +17,8 @@ input, button {
     font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
-button {
+button,
+.button {
     font-size: 16px;
     cursor: pointer;
     padding: 10px;
