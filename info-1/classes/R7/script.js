@@ -59,6 +59,14 @@ const classList = [
         title: "プログラミング⑤ (今までの答え) / 自作のプログラムを作ろう",
         keyWord: [""],
     },
+    {
+        title: "ネットワークを構成する機器",
+        keyWord: ["ネットワーク", "LAN", "ルーター", "ハブ", "アクセスポイント", "有線LAN", "無線LAN"],
+    },
+    {
+        title: "パケット通信とプロトコル",
+        keyWord: [""],
+    },
 ]
 
 function addList() {
