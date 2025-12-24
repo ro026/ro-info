@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- ここから全ページ共通 -->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>情報I | おかだのページ</title>
+    <link rel="icon" href="../../../../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f01ea68b5a.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBE12XNHB2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBE12XNHB2');
+    </script>
+
+    <!-- 共通部分ここまで -->
+    <style>
+        .number {
+            background-color: #1565c0;
+            color: white;
+            margin-right: 10px;
+            border-radius: 5px;
+            padding: 0px 5px;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        #class-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0;
+            margin-bottom: 1rem;
+            list-style: none;
+        }
+
+        #class-tabs li {
+            margin: 0;
+        }
+
+        #class-tabs a {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        #class-tabs a.active {
+            font-weight: bold;
+            background-color: #1565c0;
+            color: white;
+        }
+
+        .class-panel {
+            margin-bottom: 2rem;
+        }
+
+        #everyone_project {
+            height: 800px;
+            overflow: scroll;
+            border: solid 2px #1565c0;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div id="header">
+        </div>
+        <main>
+            <h2 id="class-name"></h2>
+            <h3>更新情報</h3>
+            <ul>
+                <li>🆕 2025/12/24 冬休みの課題について更新しました。</li>
+            </ul>
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#winter-homework">冬休みの課題について</a></li>
+                <li><a href="#qa">よくある質問</a></li>
+            </ul>
+            <h3 id="winter-homework">冬休みの課題について</h3>
+            <h3 id="qa">よくある質問</h3>
+        </main>
+    </div>
+</body>
+
+<!-- 外部ファイルの読み込み(共通) -->
+<script src="../../../../main.js"></script>
+<script src="../script.js"></script>
+<script>
+    addTitle();
+    const materialList = [
+    ];
+    addMaterial(materialList);
+</script>
+<!-- 外部ファイルの読み込み(共通)ここまで -->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</html>
