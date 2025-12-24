@@ -34,54 +34,32 @@
 
     <!-- 共通部分ここまで -->
     <style>
-        .number {
-            background-color: #1565c0;
-            color: white;
-            margin-right: 10px;
-            border-radius: 5px;
-            padding: 0px 5px;
-        }
+        .step {
+            ol {
+                counter-reset: item;
+                list-style-type: none;
+                padding-left: 0;
+            }
 
-        .title {
-            font-size: 20px;
-        }
+            ol ol {
+                padding-left: 1em;
+            }
 
-        #class-tabs {
-            display: flex;
-            gap: 0.5rem;
-            padding: 0;
-            margin-bottom: 1rem;
-            list-style: none;
-        }
+            li {
+                text-indent: -1.3em;
+                padding-left: 1.3em;
+            }
 
-        #class-tabs li {
-            margin: 0;
-        }
-
-        #class-tabs a {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 999px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        #class-tabs a.active {
-            font-weight: bold;
-            background-color: #1565c0;
-            color: white;
-        }
-
-        .class-panel {
-            margin-bottom: 2rem;
-        }
-
-        #everyone_project {
-            height: 800px;
-            overflow: scroll;
-            border: solid 2px #1565c0;
-            padding: 10px;
+            li:before {
+                counter-increment: item;
+                content: counter(item);
+                /* 以下は自由に装飾... */
+                padding: 0px 10px;
+                font-weight: bold;
+                background-color: blue;
+                clip-path: polygon(25% 0%, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+                color: white;
+            }
         }
     </style>
 </head>
@@ -99,10 +77,47 @@
             <h3>目次</h3>
             <ul>
                 <li><a href="#winter-homework">冬休みの課題について</a></li>
+                <li><a href="#evaluation-perspective">評価観点</a></li>
                 <li><a href="#qa">よくある質問</a></li>
             </ul>
             <h3 id="winter-homework">冬休みの課題について</h3>
-            <h3 id="qa">よくある質問</h3>
+            <p>最終目標は、<span style="font-weight: bold; font-size: 20px;">Scratchの自分の課題を完成させること</span>です。</p>
+            <p>評価観点に従って、<span style="font-weight: bold; font-size: 20px;">1月13日(月)23:59</span>までに完成・Formsの回答終了をしてください。
+            </p>
+            <div class="step">
+                <h4>課題提出のステップ</h4>
+                <ol>
+                    <li><a href="../015/index.html#everyone" target="_blank">みんなの作品</a>から、自分の作品を選択する
+                        <p>こういった画面になる場合は、共有ができていないので、<a
+                                href="https://prokids.jp/news/scratch_sharing">こちらのページ</a>を参考にページの共有（場合によってはアカウントメールアドレスの認証）をしてください。<br /><img
+                                src="img/not-share.png">
+                        </p>
+                    </li>
+                    <li>サインインする</li>
+                    <li>作品を完成させる</li>
+                    <li>「使い方」の編集をする
+                        <ol>
+                            <li><a href="../015/index.html#everyone" target="_blank">みんなの作品</a>から、自分の作品を選択する</li>
+                            <li>画像の部分に、「タイトル」と「使い方」を記入してください。<img src="./img/1.png" /></li>
+                            <li>「使い方」には、「作品の概要」と「操作方法」を記入し、このゲームをする人が伝わるように、操作方法を記入してください。</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <h3 id="evaluation-perspective">評価観点</h3>
+            各項目に関して、5段階評価をします。
+            <ul>
+                <li>何を作りたい作品かが伝わる</li>
+                <li>自分なりの工夫・発想がある</li>
+                <li>意図した通りに動作する</li>
+                <li>操作方法が分かりやすい</li>
+                <li>作品全体に統一感がある</li>
+                <li>条件分岐・繰り返し・変数・リストなど、授業で扱ったプログラミングの内容を適切に使用している</li>
+            </ul>
+            <h3 id="qa">質問がある場合</h3>
+            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfs4ExZB_05orTRDDuwprghohD2t7XKl0cDmP7AYv_o8PQr9Q/viewform?usp=publish-editor"
+                    target="_blank">こちら(Googleフォーム)</a>から質問してください。Teamsで回答をします。
+            </p>
         </main>
     </div>
 </body>
