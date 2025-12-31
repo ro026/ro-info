@@ -246,10 +246,6 @@
             animation-delay: .18s;
         }
 
-        .delay3 {
-            animation-delay: .30s;
-        }
-
         @keyframes fadeUp {
             to {
                 opacity: 1;
@@ -298,17 +294,15 @@
             <div class="header spark fadeUp delay1">謹賀新年</div>
 
             <div class="center">
-                <p class="message spark fadeUp delay2">
-                    あけましておめでとうございます<br>
-                    今年もよろしくお願いします
+                <p class="message fadeUp delay2" id="message">
+                    <!-- JSで差し替え -->
                 </p>
-                <div class="year spark fadeUp delay3">2026</div>
             </div>
 
             <div class="credit">
-                撮影地：栃木県佐野市
+                栃木県佐野市
                 <ruby>三毳山<rt>みかもやま</rt></ruby>
-                山頂<br>
+                山頂からの初日の出<br>
                 撮影日：2026年1月1日 6時48分
             </div>
         </main>
@@ -328,6 +322,46 @@
             main.classList.add("is-on");
             setTimeout(() => intro.style.display = "none", 650);
         }, 3000);
+
+        // メッセージ定義
+        const messages = {
+            default: `
+            あけましておめでとうございます。<br />
+            昨年はありがとうございました。<br />
+            今年も一緒に良い一年に<br />
+            していけたら嬉しいです！
+            `,
+            1: `
+            昨年は大変お世話になり、<br />
+            ありがとうございました。<br />
+            温かくご支援いただき、<br />
+            心より感謝申し上げます。<br />
+            本年は学びを糧に、<br />
+            より一層前向きに<br />
+            取り組んでまいります。<br />
+            2026年も、<br />
+            よろしくお願いします！
+            `,
+            2: `
+            2025年も遊んでくれて<br />
+            ありがとうございます！<br />
+            懲りずに引き続き<br />
+            関わってくれると嬉しいです🙇‍♂️<br />
+            2026年も、<br />
+            よろしくお願いします！
+            `
+        };
+
+        // クエリパラメータ取得
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get("m");
+
+        // 表示先
+        const messageEl = document.getElementById("message");
+
+        // 切り替え
+        messageEl.innerHTML = messages[mode] ?? messages.default;
+
     </script>
 </body>
 
