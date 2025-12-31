@@ -185,8 +185,7 @@
             text-align: center;
 
             width: min(92vw, 980px);
-            background: rgba(0, 0, 0, 0.35);
-            padding: 52px 46px;
+            text-shadow: 0 6px 16px rgba(0, 0, 0, .55);
             border-radius: 28px;
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(3px);
@@ -283,6 +282,34 @@
         .back-top {
             color: white;
         }
+
+        /* 1行表示用アニメーション */
+        .line {
+            opacity: 0;
+            animation: lineInOut 4.0s ease forwards;
+            text-shadow: 0 6px 16px rgba(0, 0, 0, .55);
+        }
+
+        @keyframes lineInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
     </style>
 </head>
 
@@ -335,44 +362,62 @@
         }, 3000);
 
         // メッセージ定義
-        const messages = {
-            default: `
-            あけましておめでとうございます。<br />
-            昨年はありがとうございました。<br />
-            今年も一緒に良い一年に<br />
-            していけたら嬉しいです！
-            `,
-            1: `
-            昨年は大変お世話になり、<br />
-            ありがとうございました。<br />
-            温かくご支援いただき、<br />
-            心より感謝申し上げます。<br />
-            本年は学びを糧に、<br />
-            より一層前向きに<br />
-            取り組んでまいります。<br />
-            2026年も、<br />
-            よろしくお願いします！
-            `,
-            2: `
-            2025年も遊んでくれて<br />
-            ありがとうございます！<br />
-            懲りずに引き続き<br />
-            関わってくれると嬉しいです🙇‍♂️<br />
-            2026年も、<br />
-            よろしくお願いします！
-            `
+        const messageLines = {
+            default: [
+                "あけましておめでとうございます。",
+                "昨年はありがとうございました。",
+                "今年も一緒に良い一年にしていけたら嬉しいです！",
+            ],
+            1: [
+                "昨年は大変お世話になり、ありがとうございました。",
+                "温かくご支援いただき、心より感謝申し上げます。",
+                "本年は学びを糧に、より一層前向きに取り組んでまいります。",
+                "2026年も、よろしくお願いします！"
+            ],
+            2: [
+                "2025年もいろいろ関わってくれてありがとうございます！",
+                "懲りずに引き続き関わってくれると嬉しいです🙇‍♂️",
+                "2026年も、よろしくお願いします！",
+            ]
         };
 
-        // クエリパラメータ取得
-        const params = new URLSearchParams(window.location.search);
-        const mode = params.get("m");
+        /* ===== クエリ取得 ===== */
+        const params = new URLSearchParams(location.search);
+        const mode = params.get("m") ?? "default";
+        const lines = messageLines[mode] ?? messageLines.default;
 
-        // 表示先
+        /* ===== 1行ずつ表示 → 消える ===== */
         const messageEl = document.getElementById("message");
+        let index = 0;
 
-        // 切り替え
-        messageEl.innerHTML = messages[mode] ?? messages.default;
+        function showNextLine() {
+            if (index >= lines.length) {
+                // 最後に全文を固定表示（不要なら消してOK）
+                messageEl.innerHTML = lines.join("<br />");
+                return;
+            }
 
+            messageEl.innerHTML = `<span class="line">${lines[index]}</span>`;
+            index++;
+
+            setTimeout(showNextLine, 5000); // ← 表示間隔
+        }
+
+        /* ===== イントロ終了後に本編表示 → 文字アニメ開始 ===== */
+        setTimeout(() => {
+            // イントロを消す
+            intro.style.opacity = "0";
+            main.classList.add("is-on");
+
+            // フェードアウト完了後
+            setTimeout(() => {
+                intro.style.display = "none";
+
+                // ★ ここで初めて文字アニメを開始
+                showNextLine();
+
+            }, 3000);
+        }, 3000); // ← 縦書き「謹賀新年」演出が終わるタイミング
     </script>
 </body>
 
