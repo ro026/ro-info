@@ -46,6 +46,30 @@
             font-size: 20px;
         }
 
+        .list-row {
+            display: grid;
+            /* 左列固定 / 右列可変 */
+            grid-template-columns: 120px 1fr;
+            column-gap: 12px;
+            align-items: start;
+            margin-bottom: 6px;
+            align-items: stretch;
+        }
+
+        .list-title {
+            background-color: #d7d7d7;
+            color: black;
+            text-align: center;
+            border-radius: 5px;
+            padding: 0px 5px;
+            /* タイトルは折り返さない */
+            white-space: nowrap;
+        }
+
+        .list-content {
+            word-break: break-word;
+        }
+
         #class-tabs {
             display: flex;
             gap: 0.5rem;
@@ -135,6 +159,23 @@
         const clazz = str[1];   // 組
         const number = Number(str.slice(2)); // 出席番号（後ろ2桁）
         return `${grade}年${clazz}組${number}番`;
+    }
+
+    function convertListTitle(title, content) {
+        const listDiv = document.createElement("div");
+        listDiv.classList.add("list-row");
+
+        const titleSpan = document.createElement("span");
+        titleSpan.classList.add("list-title");
+        titleSpan.textContent = title;
+
+        const contentSpan = document.createElement("span");
+        contentSpan.classList.add("list-content");
+        contentSpan.textContent = content;
+
+        listDiv.appendChild(titleSpan);
+        listDiv.appendChild(contentSpan);
+        return listDiv;
     }
 
     const projectsEle = document.getElementById("everyone_project");
@@ -331,14 +372,21 @@
                 link.classList.add("title");
                 link.textContent = project.title;
 
-                const description = document.createElement("div");
-                description.textContent = project.description;
-
                 item.appendChild(numberSpan);
                 item.appendChild(document.createTextNode(" "));
                 item.appendChild(link);
-                item.appendChild(description);
-
+                // 冬休みの課題を提出しているか否か
+                if (project.genre) {
+                    item.appendChild(convertListTitle("ジャンル", project.genre));
+                    item.appendChild(convertListTitle("概要", project.desc));
+                    item.appendChild(convertListTitle("操作方法", project.howtouse));
+                    item.appendChild(convertListTitle("更新日", formatDate(project.update)));
+                } else {
+                    const description = document.createElement("div");
+                    description.textContent = project.description;
+                    item.appendChild(description);
+                    item.appendChild(convertListTitle("冬休みの課題", "未提出"));
+                }
                 list.appendChild(item);
             });
 
