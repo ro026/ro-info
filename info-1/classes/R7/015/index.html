@@ -161,7 +161,7 @@
         return `${grade}年${clazz}組${number}番`;
     }
 
-    function convertListTitle(title, content) {
+    function convertListTitle(title, content, styles = {}) {
         const listDiv = document.createElement("div");
         listDiv.classList.add("list-row");
 
@@ -170,6 +170,7 @@
         titleSpan.textContent = title;
 
         const contentSpan = document.createElement("span");
+        Object.assign(contentSpan.style, styles.content);
         contentSpan.classList.add("list-content");
         contentSpan.textContent = content;
 
@@ -380,7 +381,12 @@
                     item.appendChild(convertListTitle("ジャンル", project.genre));
                     item.appendChild(convertListTitle("概要", project.desc));
                     item.appendChild(convertListTitle("操作方法", project.howtouse));
-                    item.appendChild(convertListTitle("更新日", formatDate(project.update)));
+
+                    const contentStyle = project.update > new Date("2026-01-13T23:59:59")
+                        ? { content: { color: "red" } }
+                        : {}
+
+                    item.appendChild(convertListTitle("更新日", formatDate(project.update), contentStyle));
                 } else {
                     const description = document.createElement("div");
                     description.textContent = project.description;
