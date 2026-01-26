@@ -223,3 +223,9 @@ img {
 pre {
     overflow: scroll;
 }
+
+.warn {
+    background-color: blanchedalmond;
+    color: brown;
+    font-size: 20px;
+}
