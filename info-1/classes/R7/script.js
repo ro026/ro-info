@@ -75,6 +75,10 @@ const classList = [
         title: "宛先の表現方法",
         keyWord: ["ネットワーク", "IPアドレス", "IPv4", "IPv6", "ドメイン", "URL", "DNS"],
     },
+    {
+        title: "情報の暗号化",
+        keyWord: ["ネットワーク", "暗号化", "復号", "平文", "鍵", "共通鍵暗号方式", "公開鍵暗号方式", "公開鍵", "秘密鍵"],
+    },
 ]
 
 function addList() {
