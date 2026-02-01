@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2026/02/01",
+            kind: "update",
+            text: "[情報I]定期テスト対策の項目について、スライドを追加しました。"
+        },
+        {
             date: "2026/01/29",
             kind: "update",
             text: "[情報I]定期テスト対策の項目を追加しました。"
