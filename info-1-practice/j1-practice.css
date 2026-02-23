@@ -23,13 +23,13 @@
     overflow-y: auto;
 }
 
-ul {
+.question-card ul {
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
-li {
+.question-card li {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

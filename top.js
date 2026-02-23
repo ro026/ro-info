@@ -1,6 +1,11 @@
 (function () {
     const updateList = [
         {
+            date: "2026/02/23",
+            kind: "update",
+            text: "「情報I 共通テスト100点への道」を「情報I 共通テスト対策ページ」に変更しました。"
+        },
+        {
             date: "2026/02/12",
             kind: "add",
             text: "[情報I]定期テストの答え・解説を追加しました。"

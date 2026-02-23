@@ -12,7 +12,7 @@
         // { path: "khs-web-pj", name: "釜高祭WebページPJ" },
         { path: "info-1", name: "情報I" },
         { path: "self-introduction", name: "自己紹介" },
-        { path: "info-1-practice", name: "情報I 共通テスト100点への道 問題集" },
+        { path: "info-1-practice", name: "情報I 共通テスト対策ページ" },
         { path: "happy-new-year", name: "年賀状" },
     ]
 
