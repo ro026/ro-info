@@ -87,6 +87,10 @@ const classList = [
         title: "コンピュータの構成",
         keyWord: ["CPU", "主記憶装置", "メインメモリ", "補助記憶装置", "ストレージ"],
     },
+    {
+        title: "いいデザインのWebページを作ろう",
+        keyWord: [""],
+    },
 ]
 
 function addList() {

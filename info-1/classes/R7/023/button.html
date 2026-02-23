@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>文化祭アンケートフォーム</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+            background: #f4f6f8;
+            color: #111827;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+        }
+
+        /* ↓↓↓↓↓↓ボタンのCSS。これより下を編集してください！！！！ */
+        button {
+            background-color: white;
+            color: #000000;
+            font-size: 13px;
+        }
+
+        /* 非活性(ボタンが押せない時)のデザイン */
+        button:disabled {
+            background-color: white;
+        }
+
+        /* ボタンが押せて、かつカーソルを合わせた時のデザイン */
+        button:hover {
+            background-color: white;
+        }
+
+        /* ↑↑↑↑↑↑↑↑↑ボタンのCSS。これより上を編集してください！！！！ */
+
+        #result {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f3f4f6;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>文化祭アンケート</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <form id="surveyForm">
+
+                <div>
+                    <label for="name">名前</label>
+                    <input type="text" id="name">
+                </div>
+
+                <div>
+                    <label for="class">クラス</label>
+                    <select id="class">
+                        <option value="">選択してください</option>
+                        <option>1年A組</option>
+                        <option>1年B組</option>
+                        <option>1年C組</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="satisfaction">満足度</label>
+                    <select id="satisfaction">
+                        <option value="">選択してください</option>
+                        <option>とても良かった</option>
+                        <option>まあまあ良かった</option>
+                        <option>普通</option>
+                        <option>あまり良くなかった</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="comment">感想</label>
+                    <textarea id="comment" rows="4"></textarea>
+                </div>
+
+                <!-- ↓↓↓↓↓↓これがボタン -->
+                <button type="submit" id="submitBtn" disabled>送信する</button>
+                <!-- ↑↑↑↑↑↑これがボタン -->
+
+            </form>
+
+            <div id="result">まだ送信されていません。</div>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("surveyForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const result = document.getElementById("result");
+
+        const nameInput = document.getElementById("name");
+        const classSelect = document.getElementById("class");
+        const satisfactionSelect = document.getElementById("satisfaction");
+        const commentInput = document.getElementById("comment");
+
+        /* 全項目チェック */
+        function checkForm() {
+            if (
+                nameInput.value.trim() !== "" &&
+                classSelect.value !== "" &&
+                satisfactionSelect.value !== "" &&
+                commentInput.value.trim() !== ""
+            ) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        /* 入力があるたびにチェック */
+        nameInput.addEventListener("input", checkForm);
+        classSelect.addEventListener("change", checkForm);
+        satisfactionSelect.addEventListener("change", checkForm);
+        commentInput.addEventListener("input", checkForm);
+
+        /* 送信処理 */
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = nameInput.value;
+            const satisfaction = satisfactionSelect.value;
+
+            result.textContent = name + "さん、ご回答ありがとうございました！（満足度：" + satisfaction + "）";
+
+            form.reset();          // フォームをリセット
+            submitBtn.disabled = true;  // 再び非活性に戻す
+        });
+    </script>
+
+</body>
+
+</html>
